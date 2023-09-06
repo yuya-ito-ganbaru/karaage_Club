@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/**** breeze ****/
 Route::get('/', function () {
     return view('welcome');
 });
