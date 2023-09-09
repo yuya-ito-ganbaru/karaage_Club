@@ -17,6 +17,9 @@ class UsersTableSeeder extends Seeder
         $names = [
             'hayama' => '葉山',
             'yamada' => '山田',
+            'ito' => '伊藤',
+            'kanamori' => '金森',
+            'ishida' => '石田',
             'tanaka' => '田中'
         ];
 
