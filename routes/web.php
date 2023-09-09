@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AccountProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,9 +46,9 @@ Route::middleware(['auth'])->group(function () {
     })->name('works2');
 });
 
+/**** userAccountContentページ表示 ****/
+Route::get('/text',[AccountProfileController::class, 'account']);
+Route::post('/text',[AccountProfileController::class, 'create'])->name('create');
+
 
 require __DIR__.'/auth.php';
-
-Route::get('/text', function () {
-    return view('/text');
-});
