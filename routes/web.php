@@ -33,22 +33,33 @@ Route::get('/', function () {
     return view('/topPage/top');
 })->name('top');
 
-/**** userContentsページ表示 ****/
+/**** userContents表示 ****/
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return view('/userContents/dashboard');
     })->name('dashboard');
-    Route::get('/works', function () {
-        return view('/userContents/workspace');
-    })->name('works');
+    
+    Route::get('/accountProfile', [AccountProfileController::class, 'account'])->name('accountProfile');
+    Route::get('/accountProfile/edit', [AccountProfileController::class, 'edit'])->name('edit');
+
     Route::get('/works2', function () {
         return view('/userContents/workspace2');
     })->name('works2');
 });
 
-/**** userAccountContentページ表示 ****/
-Route::get('/text',[AccountProfileController::class, 'account']);
-Route::post('/text',[AccountProfileController::class, 'create'])->name('create');
+/**** userContents 登録、編集、削除 ****/
+Route::middleware(['auth'])->group(function () {
+    Route::post('/accountProfile/create', [AccountProfileController::class, 'create'])->name('create');
+    Route::post('/accountProfile/update', [AccountProfileController::class, 'upDate'])->name('upDate');
+    Route::post('/accountProfile/delete', [AccountProfileController::class, 'delete'])->name('delete');
+});
+
+/**** 作業用スペース ****/
+//Route::get('/text',[AccountProfileController::class, 'account']);
+//Route::post('/text',[AccountProfileController::class, 'create'])->name('create');
 
 
-require __DIR__.'/auth.php';
+/**** 作業用スペース ****/
+
+
+require __DIR__ . '/auth.php';
