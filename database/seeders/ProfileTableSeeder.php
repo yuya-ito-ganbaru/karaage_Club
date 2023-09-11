@@ -19,7 +19,7 @@ class ProfileTableSeeder extends Seeder
         foreach (range($startUserId,$endUserId) as $user_id) {
             Profile::create([
                 'user_id' => $user_id, // ユーザーIDを指定
-                'body' => 'usersテーブルのID' . $user_id . 'のユーザープロフィールのテキストです',
+                'body' => 'usersテーブルのID' . $user_id . 'のユーザープロフィールのテキストです。よろしくお願いします。',
             ]);
         }
     }
