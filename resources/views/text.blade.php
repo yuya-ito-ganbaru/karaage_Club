@@ -40,7 +40,7 @@
     <div>
         <form action="{{ route('create') }}" method="post">
             @csrf
-            <input type="text" name="body" value="{{ old('body', $account ? $account->body : '') }}">
+            <input type="text" name="body" value="">
             <input type="submit" name="submit" value="送信">
         </form>
     </div>
