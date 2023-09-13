@@ -20,6 +20,7 @@ class ProfileTableSeeder extends Seeder
             Profile::create([
                 'user_id' => $user_id, // ユーザーIDを指定
                 'body' => 'usersテーブルのID' . $user_id . 'のユーザープロフィールのテキストです。よろしくお願いします。',
+                'nickname' => 'からあげメンバー' . $user_id,
             ]);
         }
     }
