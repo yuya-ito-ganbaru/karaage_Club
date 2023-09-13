@@ -42,9 +42,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/accountProfile', [AccountProfileController::class, 'account'])->name('accountProfile');
     Route::get('/accountProfile/edit', [AccountProfileController::class, 'edit'])->name('edit');
 
-    Route::get('/works2', function () {
-        return view('/userContents/workspace2');
-    })->name('works2');
+    Route::get('/articlePost', function () {
+        return view('/userContents/articlePosts/articlePost');
+    })->name('articlePost');
 });
 
 /**** userContents 登録、編集、削除 ****/
