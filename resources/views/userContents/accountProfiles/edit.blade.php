@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <form action="{{ !$account ? route('create') : route('upDate') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ $account ? route('upDate') : route('create') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div style="margin-top:2%;">
                             <label for="formFile" class="form-label">プロフィール写真</label>
