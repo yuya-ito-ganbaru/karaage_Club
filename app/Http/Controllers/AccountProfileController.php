@@ -39,12 +39,17 @@ class AccountProfileController extends Controller
      */
     public function create(Request $request)
     {
+        //dd($_POST);
         //ディレクトリ名
         $dir = 'img';
-        //ファイル名を取得
-        $file_name = $request->file('image')->getClientOriginalName();
-        //storage/public/imgに画像を保存
-        $request->file('image')->storeAs('public/' . $dir, $file_name);
+        if ($request->hasFile('image')) {
+            //ファイル名を取得
+            $file_name = $request->file('image')->getClientOriginalName();
+            //storage/public/imgに画像を保存
+            $request->file('image')->storeAs('public/' . $dir, $file_name);
+        } else {
+            $file_name = null;
+        }
 
         //ログインユーザー確認
         $user = Auth::user();
