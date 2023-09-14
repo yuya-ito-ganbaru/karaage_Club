@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ ('プロフィール') }}
+            {{ ('プロフィール ※レスポンシブ未対応') }}
         </h2>
     </x-slot>
 
@@ -29,7 +29,7 @@
                     <div>
                         <form action="{{ route('delete') }}" method="post">
                         @csrf
-                        <input name="delete" style="background-color: red; border-color: white; margin:24px 1.5rem; padding:10px;" type="submit" class="btn btn-danger" value="プロフィールリセット">
+                        <button style="margin:24px 1.5rem; padding:10px;" class="btn btn-danger"><input name="delete" type="submit" value="プロフィールリセット"></button>
                         </form>
                     </div>
                 </div>
