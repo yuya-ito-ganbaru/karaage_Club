@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AccountProfileController;
+use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,25 +39,27 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return view('/userContents/dashboard');
     })->name('dashboard');
-    
-    Route::get('/accountProfile', [AccountProfileController::class, 'account'])->name('accountProfile');
-    Route::get('/accountProfile/edit', [AccountProfileController::class, 'edit'])->name('edit');
-
-    Route::get('/articlePost', function () {
-        return view('/userContents/articlePosts/articlePost');
-    })->name('articlePost');
 });
 
-/**** userContents 登録、編集、削除 ****/
+/**** userContents/accountProfile 表示 ****/
+Route::middleware(['auth'])->group(function () {
+    Route::get('/accountProfile', [AccountProfileController::class, 'account'])->name('accountProfile');
+    Route::get('/accountProfile/edit', [AccountProfileController::class, 'edit'])->name('edit');
+});
+/**** userContents/accountProfile 登録、編集、削除 ****/
 Route::middleware(['auth'])->group(function () {
     Route::post('/accountProfile/create', [AccountProfileController::class, 'create'])->name('create');
     Route::post('/accountProfile/update', [AccountProfileController::class, 'upDate'])->name('upDate');
     Route::post('/accountProfile/delete', [AccountProfileController::class, 'delete'])->name('delete');
 });
 
+/**** userContents/articlePost 表示 ****/
+Route::middleware(['auth'])->group(function () {
+    Route::get('/articlePost', [ArticleController::class, 'account'])->name('articlePost');
+});
+
 /**** 作業用スペース ****/
-//Route::get('/text',[AccountProfileController::class, 'account']);
-//Route::post('/text',[AccountProfileController::class, 'create'])->name('create');
+Route::post('/articlePost/create', [ArticleController::class, 'postCreate'])->name('postCreate');
 
 
 /**** 作業用スペース ****/
