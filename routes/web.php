@@ -58,8 +58,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/articlePost', [ArticleController::class, 'account'])->name('articlePost');
 });
 
+/**** userContents/articlePost 投稿、編集、削除 ****/
+Route::middleware(['auth'])->group(function () {
+    Route::post('/articlePost/create', [ArticleController::class, 'postCreate'])->name('postCreate');
+});
+
 /**** 作業用スペース ****/
-Route::post('/articlePost/create', [ArticleController::class, 'postCreate'])->name('postCreate');
+
+//Route::get('/articleConfirm', function () {
+//    return view('/userContents/articlePosts/articleConfirm');
+//})->name('articleConfirm');
 
 
 /**** 作業用スペース ****/

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ ('プロフィール ※レスポンシブ未対応') }}
+            {{ ('プロフィール ※レスポンシブ未対応、styleのリファクタリング未対応') }}
         </h2>
     </x-slot>
 
@@ -11,7 +11,7 @@
                 <div style="display: flex;">
                     <div style="width: 25%;" class="p-6">
                         <div style="width: 100%; height: 0; padding-bottom: 100%; position: relative;">
-                            <img style="border: 1px solid #d1cfcf; border-radius: 50%; width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;" src="{{ $account && $account->image ? asset('storage/img/' . $account->image) : asset('images/karaage.png') }}" alt="#">
+                            <img class="prof_img" src="{{ $account && $account->image ? asset('storage/img/' . $account->image) : asset('images/karaage.png') }}" alt="#">
                         </div>
                     </div>
                     <div style="width: 100%;" class="p-6 text-gray-900">

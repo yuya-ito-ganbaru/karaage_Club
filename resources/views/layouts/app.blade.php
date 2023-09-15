@@ -11,92 +11,45 @@
     <!-- リファクタリング予定 css作業スペース -->
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <!-- accountProfile CSS -->
     <style>
+        /**** accountProfile css ****/
         .btn-danger:hover {
             background-color: red;
             color: white;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
+        .prof_img {
+            border: 1px solid #d1cfcf; border-radius: 50%; width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;
+        }
+
+        /**** articlePost css ****/
+        .art_img {
+            border: 1px solid #d1cfcf; width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;
+        }
+    
         /**** 評価ボタンのcss ****/
         .stars span {
             display: flex;
-            /* 要素をフレックスボックスにする */
             flex-direction: row-reverse;
-            /* 星を逆順に並べる */
             justify-content: flex-end;
-            /* 逆順なので、左寄せにする */
         }
         .stars input[type='radio'] {
             display: none;
-            /* デフォルトのラジオボタンを非表示にする */
         }
         .stars label {
             color: #D2D2D2;
-            /* 未選択の星をグレー色に指定 */
             font-size: 30px;
-            /* 星の大きさを30pxに指定 */
             padding: 0 5px;
-            /* 左右の余白を5pxに指定 */
             cursor: pointer;
-            /* カーソルが上に乗ったときに指の形にする */
         }
         .stars label:hover,
         .stars label:hover~label,
         .stars input[type='radio']:checked~label {
             color: #F8C601;
-            /* 選択された星以降をすべて黄色にする */
         }
-
-
-        .star5_rating {
-            position: relative;
-            z-index: 0;
-            display: inline-block;
-            white-space: nowrap;
-            color: #CCCCCC;
-            /* グレーカラー 自由に設定化 */
-            font-size: 20px;
-            /*フォントサイズ 自由に設定化 */
+        .stars_conf {
+            pointer-events: none;
         }
-        .star5_rating:before,
-        .star5_rating:after {
-            content: '★★★★★';
-        }
-        .star5_rating:after {
-            position: absolute;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            overflow: hidden;
-            white-space: nowrap;
-            color: #ffcf32;
-            /* イエローカラー 自由に設定化 */
-        }
-        .star5_rating[data-rate="5"]:after {
-            width: 100%;
-        }
-        /* 星5 */
-        .star5_rating[data-rate="4"]:after {
-            width: 80%;
-        }
-        /* 星4 */
-        .star5_rating[data-rate="3"]:after {
-            width: 60%;
-        }
-        /* 星3 */
-        .star5_rating[data-rate="2"]:after {
-            width: 40%;
-        }
-        /* 星2 */
-        .star5_rating[data-rate="1"]:after {
-            width: 20%;
-        }
-        /* 星1 */
-        .star5_rating[data-rate="0"]:after {
-            width: 0%;
-        }
-        /* 星0 */
         .review {
             padding-top: 10px;
             padding-bottom: 10px;
@@ -142,6 +95,7 @@
                 selectedValueInput.value = radioButton.value;
             });
         });
+
     </script>
 </body>
 </html>

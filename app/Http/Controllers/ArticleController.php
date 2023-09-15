@@ -26,7 +26,7 @@ class ArticleController extends Controller
      */
     public function postCreate(Request $request)
     {
-        dd($_POST);
+        //dd($_POST);
         //ディレクトリ名
         $dir = 'article_images';
         if ($request->hasFile('image')) {
@@ -48,7 +48,8 @@ class ArticleController extends Controller
         $article->image = $file_name;
         $article->body = $request->input('body');
         $article->recommend = $request->input('recommend');
-        $article->save();
-        return redirect()->route('articlePost');
+        //$article->save();
+        //return redirect()->route('articlePost');
+        return view('/userContents/articlePosts/articleConfirm', compact('article'));
     }
 }

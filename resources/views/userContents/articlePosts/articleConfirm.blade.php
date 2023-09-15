@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ ('新規投稿 ※レスポンシブ未対応、styleのリファクタリング未対応') }}
+            {{ ('新規投稿 確認画面') }}
         </h2>
     </x-slot>
 
@@ -9,30 +9,29 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    {{ ('新規投稿フォーム') }}
+                    {{ ('新規投稿確認フォーム') }}
                     <form action="{{ route('postCreate') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div style="display: flex;">
                             <div style="width: 70%;" class="p-6">
                                 <div style="width: 100%; height: 0; padding-bottom: 100%; position: relative;">
-                                    <img class="art_img" src="{{ asset('images/karaage.png') }}" alt="#">
+                                    <img class="art_img" src="" alt="#">
                                 </div>
                                 <label for="formFile" class="form-label">投稿写真</label>
-                                <input name="image" class="form-control" type="file" id="formFile" value="">
-                                <br>
+                                <input style="display: none;" name="image" class="form-control" type="file" id="formFile" value="">
 
                                 <div class="review">
-                                    <div class="stars">
+                                    <div class="stars stars_conf">
                                         <span>
-                                            <input id="review01" type="radio" name="recommend" value="5">
+                                            <input id="review01" type="radio" name="recommend" value="5" {{ $article->recommend == 5 ? 'checked' : '' }}>
                                             <label for="review01">★</label>
-                                            <input id="review02" type="radio" name="recommend" value="4">
+                                            <input id="review02" type="radio" name="recommend" value="4" {{ $article->recommend == 4 ? 'checked' : '' }}>
                                             <label for="review02">★</label>
-                                            <input id="review03" type="radio" name="recommend" value="3">
+                                            <input id="review03" type="radio" name="recommend" value="3" {{ $article->recommend == 3 ? 'checked' : '' }}>
                                             <label for="review03">★</label>
-                                            <input id="review04" type="radio" name="recommend" value="2">
+                                            <input id="review04" type="radio" name="recommend" value="2" {{ $article->recommend == 2 ? 'checked' : '' }}>
                                             <label for="review04">★</label>
-                                            <input id="review05" type="radio" name="recommend" value="1">
+                                            <input id="review05" type="radio" name="recommend" value="1" {{ $article->recommend == 1 ? 'checked' : '' }}>
                                             <label for="review05">★</label>
                                         </span>
                                     </div>
@@ -42,17 +41,16 @@
                                 </div>
                             </div>
                             <div style="width: 100%;" class="p-6 text-gray-900">
-                                <div style="">
-                                    <label for="title" class="form-label">タイトル</label>
-                                    <input id="title" name="title" style="border-radius: 5px; border:1px solid #d1cfcf;;" type="text" class="form-control" value="">
+                                <div style="border-bottom:1px solid #d1cfcf;">
+
+                                    <p>{{ $article->title }}</p>
                                 </div>
-                                <div style="margin-top:2%;">
-                                    <label for="tag" class="form-label">タグ</label>
-                                    <input id="tag" name="tag" style="border-radius: 5px; border:1px solid #d1cfcf;;" type="text" class="form-control" value="">
+                                <div style="margin-top:2%; border-bottom:1px solid #d1cfcf;">
+
+                                    <p>{{ $article->tag }}</p>
                                 </div>
-                                <div style="margin-top:2%;" class="form-floating">
-                                    <textarea name="body" class="form-control" placeholder="自己紹介" id="floatingInput" style="min-height: 350px"></textarea>
-                                    <label style="color: #d1cfcf;" for="floatingInput">投稿記事</label>
+                                <div style="margin-top:2%; border-bottom:1px solid #d1cfcf; min-height: 350px;" class="form-floating">
+                                    <p>{{ $article->body }}</p>
                                 </div>
                             </div>
                         </div>
