@@ -10,16 +10,26 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     {{ ('新規投稿確認フォーム') }}
-                    <form action="{{ route('postCreate') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('postComplete') }}" method="post" enctype="multipart/form-data">
                         @csrf
+                        <!-- user_id -->
+                        <input name="ser_id" type="hidden" value="{{ $article->user_id }}">
+                        <!-- title -->
+                        <input name="title" type="hidden" value="{{ $article->title }}">
+                        <!-- tag -->
+                        <input name="tag" type="hidden" value="{{ $article->tag }}">
+                        <!-- body -->
+                        <input name="body" type="hidden" value="{{ $article->body }}">
+                        <!-- image -->
+                        <input name="image" type="hidden" value="{{ $article->image }}">
+                        <!-- recommend -->
+                        <input name="recommend" type="hidden" value="{{ $article->recommend }}">
+
                         <div style="display: flex;">
                             <div style="width: 70%;" class="p-6">
                                 <div style="width: 100%; height: 0; padding-bottom: 100%; position: relative;">
-                                    <img class="art_img" src="" alt="#">
+                                    <img id="file-preview" class="art_img" src="{{ asset('storage/article_images/' . $article->image) }}" alt="#">
                                 </div>
-                                <label for="formFile" class="form-label">投稿写真</label>
-                                <input style="display: none;" name="image" class="form-control" type="file" id="formFile" value="">
-
                                 <div class="review">
                                     <div class="stars stars_conf">
                                         <span>
@@ -35,9 +45,6 @@
                                             <label for="review05">★</label>
                                         </span>
                                     </div>
-                                    <!--
-                                    <input type="hidden" name="recommend" id="selectedRecommendValue" value="">
-                                    -->
                                 </div>
                             </div>
                             <div style="width: 100%;" class="p-6 text-gray-900">

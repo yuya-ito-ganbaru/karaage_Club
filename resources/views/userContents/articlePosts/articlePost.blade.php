@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ ('新規投稿 ※レスポンシブ未対応、styleのリファクタリング未対応') }}
+            {{ ('新規投稿') }}
         </h2>
     </x-slot>
 
@@ -15,7 +15,7 @@
                         <div style="display: flex;">
                             <div style="width: 70%;" class="p-6">
                                 <div style="width: 100%; height: 0; padding-bottom: 100%; position: relative;">
-                                    <img class="art_img" src="{{ asset('images/karaage.png') }}" alt="#">
+                                    <img id="file-preview" class="art_img" src="{{ asset('images/karaage.png') }}" alt="#">
                                 </div>
                                 <label for="formFile" class="form-label">投稿写真</label>
                                 <input name="image" class="form-control" type="file" id="formFile" value="">
@@ -24,21 +24,19 @@
                                 <div class="review">
                                     <div class="stars">
                                         <span>
-                                            <input id="review01" type="radio" name="recommend" value="5">
+                                            <input id="review01" type="radio" name="recommend5" value="5">
                                             <label for="review01">★</label>
-                                            <input id="review02" type="radio" name="recommend" value="4">
+                                            <input id="review02" type="radio" name="recommend4" value="4">
                                             <label for="review02">★</label>
-                                            <input id="review03" type="radio" name="recommend" value="3">
+                                            <input id="review03" type="radio" name="recommend3" value="3">
                                             <label for="review03">★</label>
-                                            <input id="review04" type="radio" name="recommend" value="2">
+                                            <input id="review04" type="radio" name="recommend2" value="2">
                                             <label for="review04">★</label>
-                                            <input id="review05" type="radio" name="recommend" value="1">
+                                            <input id="review05" type="radio" name="recommend1" value="1">
                                             <label for="review05">★</label>
                                         </span>
                                     </div>
-                                    <!--
                                     <input type="hidden" name="recommend" id="selectedRecommendValue" value="">
-                                    -->
                                 </div>
                             </div>
                             <div style="width: 100%;" class="p-6 text-gray-900">
