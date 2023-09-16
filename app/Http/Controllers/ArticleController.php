@@ -20,7 +20,6 @@ class ArticleController extends Controller
         $user = Auth::user();
         return view('/userContents/articlePosts/articlePost', compact('user'));
     }
-
     /**
      * 記事投稿機能
      */
@@ -37,6 +36,7 @@ class ArticleController extends Controller
         } else {
             $file_name = null;
         }
+
         //ログインユーザー確認
         $user = Auth::user();
         //プロフィールモデルのインスタンス作成
@@ -48,8 +48,38 @@ class ArticleController extends Controller
         $article->image = $file_name;
         $article->body = $request->input('body');
         $article->recommend = $request->input('recommend');
-        //$article->save();
-        //return redirect()->route('articlePost');
+        
         return view('/userContents/articlePosts/articleConfirm', compact('article'));
     }
+    /**
+     * 記事投稿登録機能
+     */
+    public function postComplete(Request $request)
+    {
+        //dd($_POST);
+        //ログインユーザー確認
+        $user = Auth::user();
+        //プロフィールモデルのインスタンス作成
+        $article = new Article();
+
+        $article->user_id = $user->id;
+        $article->title = $request->input('title');
+        $article->tag = $request->input('tag');
+        $article->image = $request->input('image');;
+        $article->body = $request->input('body');
+        $article->recommend = $request->input('recommend');
+        $article->save();
+        return redirect()->route('articlePost');
+    }
+
+    /**
+     * 投稿記事検索機能
+     */
+    public function articleSearch() {
+        //ログインユーザー確認
+        $user = Auth::user();
+        $articleList = Article::where('user_id', $user->id)->get();
+        return view('/userContents/articleLists/articleList', compact('articleList', 'user'));
+    }
+
 }
