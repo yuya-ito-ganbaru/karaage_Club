@@ -18,38 +18,57 @@
             color: white;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
+
         .prof_img {
-            border: 1px solid #d1cfcf; border-radius: 50%; width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;
+            border: 1px solid #d1cfcf;
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
 
         /**** articlePost css ****/
         .art_img {
-            border: 1px solid #d1cfcf; width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;
+            border: 1px solid #d1cfcf;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
-    
+
         /**** 評価ボタンのcss ****/
         .stars span {
             display: flex;
             flex-direction: row-reverse;
             justify-content: flex-end;
         }
+
         .stars input[type='radio'] {
             display: none;
         }
+
         .stars label {
             color: #D2D2D2;
             font-size: 30px;
             padding: 0 5px;
             cursor: pointer;
         }
+
         .stars label:hover,
         .stars label:hover~label,
         .stars input[type='radio']:checked~label {
             color: #F8C601;
         }
+
         .stars_conf {
             pointer-events: none;
         }
+
         .review {
             padding-top: 10px;
             padding-bottom: 10px;
@@ -95,7 +114,28 @@
                 selectedValueInput.value = radioButton.value;
             });
         });
+    </script>
+    <script>
+        //articlePost
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('formFile').addEventListener('change', function(e) {
+                //1枚表示
+                var file = e.target.files[0];
+                //ファイルのブラウザ上でのURLを取得する
+                var blobUrl = window.URL.createObjectURL(file);
+                //img要素に表示
+                var img = document.getElementById('file-preview');
+                img.src = blobUrl;
 
+                var fileNameInput = document.getElementById('hidden-formFile');
+                if (file) {
+                    fileNameInput.value = file.name;
+                } else {
+                    fileNameInput.value = '';
+                }
+            });
+        });
     </script>
 </body>
+
 </html>
