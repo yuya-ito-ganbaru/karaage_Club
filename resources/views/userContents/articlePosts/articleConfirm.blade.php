@@ -64,7 +64,7 @@
 
                         <input style="background-color: black; border-color: white; margin-top:2%; padding:10px;" type="submit" class="btn btn-dark" name="submit" id="submit" value="送信">
                     </form>
-                </div>
+                    
             </div>
         </div>
     </div>
