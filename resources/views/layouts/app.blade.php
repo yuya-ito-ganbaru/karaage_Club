@@ -106,19 +106,26 @@
 
     <!-- リファクタリング予定 js作業スペース -->
     <script>
+        /*
         const radioButtons = document.querySelectorAll('input[type="radio"]');
         const selectedValueInput = document.getElementById('selectedRecommendValue');
 
         radioButtons.forEach(radioButton => {
             radioButton.addEventListener('click', () => {
                 selectedValueInput.value = radioButton.value;
+
             });
         });
+        */
     </script>
     <script>
         //articlePost
         document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('formFile').addEventListener('change', function(e) {
+
+            var formFileInput = document.getElementById('formFile');
+            var imgPreview = document.getElementById('file-preview');
+
+            formFileInput.addEventListener('change', function(e) {
                 //1枚表示
                 var file = e.target.files[0];
                 //ファイルのブラウザ上でのURLを取得する
@@ -127,12 +134,7 @@
                 var img = document.getElementById('file-preview');
                 img.src = blobUrl;
 
-                var fileNameInput = document.getElementById('hidden-formFile');
-                if (file) {
-                    fileNameInput.value = file.name;
-                } else {
-                    fileNameInput.value = '';
-                }
+                
             });
         });
     </script>
