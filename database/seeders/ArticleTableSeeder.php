@@ -22,6 +22,7 @@ class ArticleTableSeeder extends Seeder
                 'title' => 'テスト投稿'.$user_id,
                 'tag' => 'テスト投稿タグ'.$user_id,
                 'body' => 'テスト投稿'.$user_id.'内容です。',
+                'image' => 'karaage.png',
                 'recommend' => rand(1, 5),
             ]);
         }
