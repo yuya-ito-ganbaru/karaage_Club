@@ -63,11 +63,26 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/articlePost', [ArticleController::class, 'postComplete'])->name('postComplete');
 });
 
+/**** userContents/articleList 表示 ****/
+Route::middleware(['auth'])->group(function () {
+    Route::get('/articleList', [ArticleController::class, 'articleSearch'])->name('articleList');
+    Route::get('/articleView{id}', [ArticleController::class, 'articleView'])->name('articleView');
+    Route::get('/articleEdit{id}', [ArticleController::class, 'articleEditView'])->name('articleEditView');
+});
+/**** userContents/articleList 編集、削除 ****/
+Route::middleware(['auth'])->group(function () {
+    Route::post('/articleList/delete', [ArticleController::class, 'articleDelete'])->name('articleDelete');
+    Route::post('/articleList/upData', [ArticleController::class, 'articleUpData'])->name('articleUpData');
+});
+
+
+
+
 /**** 作業用スペース ****/
-//Route::get('/articleList', function () {
-//    return view('/userContents/articleLists/articleList');
-//})->name('articleList');
-Route::get('/articleList', [ArticleController::class, 'articleSearch'])->name('articleList');
+//Route::get('/articleView', function () {
+//    return view('/userContents/articleLists/articleView');
+//})->name('articleView');
+
 
 /**** 作業用スペース ****/
 
