@@ -7,6 +7,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    
+    <!--jquery-->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
     <!-- リファクタリング予定 css作業スペース -->
     <!-- Bootstrap CSS -->
@@ -79,9 +82,12 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <!-- FontIcon -->
+    <script src="https://kit.fontawesome.com/aa126b8606.js" crossorigin="anonymous"></script>
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body class="font-sans antialiased">
@@ -118,26 +124,8 @@
         });
         */
     </script>
-    <script>
-        //articlePost
-        document.addEventListener('DOMContentLoaded', function() {
-
-            var formFileInput = document.getElementById('formFile');
-            var imgPreview = document.getElementById('file-preview');
-
-            formFileInput.addEventListener('change', function(e) {
-                //1枚表示
-                var file = e.target.files[0];
-                //ファイルのブラウザ上でのURLを取得する
-                var blobUrl = window.URL.createObjectURL(file);
-                //img要素に表示
-                var img = document.getElementById('file-preview');
-                img.src = blobUrl;
-
-                
-            });
-        });
-    </script>
+    
+    
 </body>
 
 </html>

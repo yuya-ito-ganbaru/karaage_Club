@@ -31,6 +31,11 @@
                         {{ ('投稿記事') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('userFavoriteLists')" :active="request()->routeIs('userFavoriteLists')">
+                        {{ ('お気に入り') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -99,6 +104,11 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('articleList')" :active="request()->routeIs('articleList')">
                 {{ ('投稿記事') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('userFavoriteLists')" :active="request()->routeIs('userFavoriteLists')">
+                {{ ('お気に入り') }}
             </x-responsive-nav-link>
         </div>
         

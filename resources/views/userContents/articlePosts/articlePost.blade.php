@@ -68,3 +68,24 @@
         </div>
     </div>
 </x-app-layout>
+
+<script>
+        //articlePost
+        document.addEventListener('DOMContentLoaded', function() {
+
+            var formFileInput = document.getElementById('formFile');
+            var imgPreview = document.getElementById('file-preview');
+
+            formFileInput.addEventListener('change', function(e) {
+                //1枚表示
+                var file = e.target.files[0];
+                //ファイルのブラウザ上でのURLを取得する
+                var blobUrl = window.URL.createObjectURL(file);
+                //img要素に表示
+                var img = document.getElementById('file-preview');
+                img.src = blobUrl;
+
+                
+            });
+        });
+    </script>
