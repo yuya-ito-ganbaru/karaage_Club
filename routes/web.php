@@ -52,6 +52,18 @@ Route::middleware('auth')->group(function () {
     Route::post('/articleList/delete', [ArticleController::class, 'articleDelete'])->name('articleDelete');
     Route::post('/articleList/upData', [ArticleController::class, 'articleUpData'])->name('articleUpData');
 });
+
+
+/**** userContents表示 ****/
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('/userContents/dashboard');
+    })->name('dashboard');
+});
+
+
+
+
 /**** お気に入り登録、いいねカウント 機能 ****/
 //いいねカウントアップ
 Route::post('/postCountUp', [LikeController::class, 'postCountUp'])->name('postCountUp');
@@ -68,12 +80,7 @@ Route::post('/favoriteDelete', [FavoriteController::class, 'favoriteDelete'])->n
 Route::get('/', [ContentController::class, 'contentsView'])->name('top');
 Route::get('/favoriteList', [ContentController::class, 'favoriteList'])->name('favoriteList');
 
-/**** userContents表示 ****/
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('/userContents/dashboard');
-    })->name('dashboard');
-});
+
 
 
 
