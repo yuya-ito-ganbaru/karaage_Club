@@ -6,6 +6,8 @@ use App\Http\Controllers\AccountProfileController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\FormController;
+use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -52,6 +54,18 @@ Route::middleware('auth')->group(function () {
     Route::post('/articleList/delete', [ArticleController::class, 'articleDelete'])->name('articleDelete');
     Route::post('/articleList/upData', [ArticleController::class, 'articleUpData'])->name('articleUpData');
 });
+
+
+/**** userContents表示 ****/
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('/userContents/dashboard');
+    })->name('dashboard');
+});
+
+
+
+
 /**** お気に入り登録、いいねカウント 機能 ****/
 //いいねカウントアップ
 Route::post('/postCountUp', [LikeController::class, 'postCountUp'])->name('postCountUp');
@@ -68,28 +82,23 @@ Route::post('/favoriteDelete', [FavoriteController::class, 'favoriteDelete'])->n
 Route::get('/', [ContentController::class, 'contentsView'])->name('top');
 Route::get('/favoriteList', [ContentController::class, 'favoriteList'])->name('favoriteList');
 
-/**** userContents表示 ****/
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('/userContents/dashboard');
-    })->name('dashboard');
-});
-
-
-
-
-
-/**** 作業用スペース ****/
-//Route::get('/articleView', function () {
-//    return view('/userContents/articleLists/articleView');
-//})->name('articleView');
-//Route::get('/', function () {
-//    return view('/topPages/top');
-//})->name('top');
+/**** お気に入り詳細表示 ****/
 Route::middleware(['auth'])->group(function () {
     Route::get('/userFavoriteList', [FavoriteController::class, 'favoriteList'])->name('userFavoriteLists');
 });
 
+
+
+/**** 作業用スペース ****/
+
+//Route::get('/contact', function () {
+//    return view('/contactForm');
+//});
+
+Route::get('/form', [FormController::class, 'index'])->name('form');
+Route::post('/form/confirm', [FormController::class, 'sendMail']);
+Route::get('/form/confirm', [FormController::class, 'confirm'])->name('form.confirm');
+Route::get('/form/complete', [FormController::class, 'complete'])->name('form.complete');
 
 
 

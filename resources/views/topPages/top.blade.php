@@ -48,7 +48,11 @@
     </div>
     <br><br>
     @endif
-
+    <div class="shrink-0 flex items-center">
+        <a href="{{ route('form') }}">
+            <h1>お問い合せページ</h1>
+        </a>
+    </div>
 
     <div style="display: flex;">
         <div style="width:50%">
@@ -68,7 +72,7 @@
             <ul class="list-group list-group-numbered">
                 @foreach($allArticles as $article)
                 <li class="list-group-item">
-                    <p>投稿タイトル:{{ $article->title }}</p>
+                    <p><a href="{{ route('articleView', ['id' => $article->id]) }}">投稿タイトル:{{ $article->title }}</a></p>
                     <p>投稿タイトル:{{ $article->body }}</p>
                     <p>投稿日:{{ $article->created_at->format('Y-m-d') }}</p>
                     @if(Auth::check())

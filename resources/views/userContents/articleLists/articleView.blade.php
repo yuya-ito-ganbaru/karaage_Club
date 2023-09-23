@@ -49,6 +49,7 @@
                         </div>
 
                     </div>
+                    @if(Auth::user()->id == $article->user_id)
                     <div class="p-6" style="display: flex;">
                         <div>
                             <a class="btn btn-dark" style="margin:0 1.5rem; background-color: black; border-color: white; color:white; padding:10px; padding-right:20px; padding-left:20px;" href="{{ route('articleEditView', ['id' => $article->id]) }}">編集</a>
@@ -61,7 +62,7 @@
                             </form>
                         </div>
                     </div>
-                    
+                    @endif
                     @endforeach
                 </div>
             </div>

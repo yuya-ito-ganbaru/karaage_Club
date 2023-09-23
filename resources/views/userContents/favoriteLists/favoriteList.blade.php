@@ -14,7 +14,8 @@
 
                         @foreach($favoriteLists_articles as $favoriteList_article)
                         <li class="list-group-item">
-                            <p><a href=""></a>{{ $favoriteList_article->title }}</p>
+                        <p>{{ $favoriteList_article->id }}</p>
+                            <p><a href="{{ route('articleView', ['id' => $favoriteList_article->id]) }}">{{ $favoriteList_article->title }}</a></p>
                             <p>投稿日:{{ $favoriteList_article->created_at->format('Y-m-d') }}</p>
                             <i class="click fa-solid fa-heart" style="color: #d1d1d1;">
                                 <input class="article_id" type="submit" name="article_id" value="{{ $favoriteList_article->id }}">
