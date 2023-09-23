@@ -247,6 +247,13 @@ return [
         'updated_at' => '更新日',
         'username' => 'ユーザー名',
         'year' => '年',
+
+        //属性名
+        'attributes' => [
+            'name' => '名前',
+            'email' => 'メールアドレス',
+            'body' => '本文'
+        ]
     ],
 
 ];
