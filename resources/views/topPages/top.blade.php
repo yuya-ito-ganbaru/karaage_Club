@@ -48,7 +48,11 @@
     </div>
     <br><br>
     @endif
-
+    <div class="shrink-0 flex items-center">
+        <a href="{{ route('form') }}">
+            <h1>お問い合せページ</h1>
+        </a>
+    </div>
 
     <div style="display: flex;">
         <div style="width:50%">
