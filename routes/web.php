@@ -7,6 +7,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\StoreController;
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
 
@@ -95,6 +96,7 @@ Route::middleware(['auth'])->group(function () {
 //    return view('/contactForm');
 //});
 
+/**** お問い合せページ ****/
 Route::get('/form', [FormController::class, 'index'])->name('form');
 Route::post('/form/confirm', [FormController::class, 'sendMail']);
 Route::get('/form/confirm', [FormController::class, 'confirm'])->name('form.confirm');
@@ -102,6 +104,8 @@ Route::get('/form/complete', [FormController::class, 'complete'])->name('form.co
 
 
 
+Route::get('/store', [StoreController::class, 'store'])->name('store');
+Route::post('/articlePost/register', [StoreController::class, 'storeRegister'])->name('storeRegister');
 
 /**** 作業用スペース ****/
 

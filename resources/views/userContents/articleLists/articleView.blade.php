@@ -11,44 +11,55 @@
                 <div class="p-6 text-gray-900">
                     {{ ('投稿記事表示') }}
                     @foreach($articles as $article)
+                    <!-- Page Content-->
+                    <section class="py-5">
+                        <div class="container px-5 my-5">
+                            <div class="row gx-5">
 
-                    <div style="display: flex;">
-                        <div style="width: 70%;" class="p-6">
-                            <div style="width: 100%; height: 0; padding-bottom: 100%; position: relative;">
-                                <img id="file-preview" class="art_img" src="{{ asset('storage/article_images/' . $article->image) }}" alt="#">
-                            </div>
-                            <div class="review">
-                                <div class="stars stars_conf">
-                                    <span>
-                                        <input id="review01" type="radio" name="recommend" value="5" {{ $article->recommend == 5 ? 'checked' : '' }}>
-                                        <label for="review01">★</label>
-                                        <input id="review02" type="radio" name="recommend" value="4" {{ $article->recommend == 4 ? 'checked' : '' }}>
-                                        <label for="review02">★</label>
-                                        <input id="review03" type="radio" name="recommend" value="3" {{ $article->recommend == 3 ? 'checked' : '' }}>
-                                        <label for="review03">★</label>
-                                        <input id="review04" type="radio" name="recommend" value="2" {{ $article->recommend == 2 ? 'checked' : '' }}>
-                                        <label for="review04">★</label>
-                                        <input id="review05" type="radio" name="recommend" value="1" {{ $article->recommend == 1 ? 'checked' : '' }}>
-                                        <label for="review05">★</label>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div style="width: 100%;" class="p-6 text-gray-900">
-                            <div style="border-bottom:1px solid #d1cfcf;">
+                                <!-- Post content-->
+                                <article style="display: flex;">
+                                    <!-- Preview image figure-->
+                                    <div style="width: 100%; height: 0; padding-bottom: 100%; position: relative;">
+                                        
+                                        <figure class="mb-4"><img class="img-fluid rounded" src="{{ asset('storage/article_images/' . $article->image) }}" alt="..." /></figure>
+                                        <div class="review">
+                                            <div class="stars stars_conf">
+                                                <span>
+                                                    <input id="review01" type="radio" name="recommend" value="5" {{ $article->recommend == 5 ? 'checked' : '' }}>
+                                                    <label for="review01">★</label>
+                                                    <input id="review02" type="radio" name="recommend" value="4" {{ $article->recommend == 4 ? 'checked' : '' }}>
+                                                    <label for="review02">★</label>
+                                                    <input id="review03" type="radio" name="recommend" value="3" {{ $article->recommend == 3 ? 'checked' : '' }}>
+                                                    <label for="review03">★</label>
+                                                    <input id="review04" type="radio" name="recommend" value="2" {{ $article->recommend == 2 ? 'checked' : '' }}>
+                                                    <label for="review04">★</label>
+                                                    <input id="review05" type="radio" name="recommend" value="1" {{ $article->recommend == 1 ? 'checked' : '' }}>
+                                                    <label for="review05">★</label>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                <p>{{ $article->title }}</p>
-                            </div>
-                            <div style="margin-top:2%; border-bottom:1px solid #d1cfcf;">
+                                    <!-- Post content-->
+                                    <section style="width: 100%;" class="mb-5">
+                                        <div style="width: 100%;" class="p-6 text-gray-900">
+                                            <div style="border-bottom:1px solid #d1cfcf;">
 
-                                <p>{{ $article->tag }}</p>
-                            </div>
-                            <div style="margin-top:2%; border-bottom:1px solid #d1cfcf; min-height: 350px;" class="form-floating">
-                                <p>{{ $article->body }}</p>
-                            </div>
-                        </div>
+                                                <p class="fs-5 mb-4">{{ $article->title }}</p>
+                                            </div>
+                                            <div style="margin-top:2%; border-bottom:1px solid #d1cfcf;">
 
-                    </div>
+                                                <p class="fs-5 mb-4">{{ $article->tag }}</p>
+                                            </div>
+                                            <div style="margin-top:2%; border-bottom:1px solid #d1cfcf; min-height: 350px;" class="form-floating">
+                                                <p class="fs-5 mb-4">{{ $article->body }}</p>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </article>
+                            </div>
+                    </section>
+                    
                     @if(Auth::user()->id == $article->user_id)
                     <div class="p-6" style="display: flex;">
                         <div>
