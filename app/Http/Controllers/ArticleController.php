@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Store;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,6 +32,7 @@ class ArticleController extends Controller
         $user = Auth::user();
         //プロフィールモデルのインスタンス作成
         $article = new Article();
+        $store = new Store();
 
         //ディレクトリ名
         $dir = 'article_images';
@@ -50,8 +52,9 @@ class ArticleController extends Controller
         $article->image = $file_name;
         $article->body = $request->input('body');
         $article->recommend = $request->input('recommend');
-
-        return view('/userContents/articlePosts/articleConfirm', compact('article'));
+        $store->store = $request->input('store');
+        $store->address = $request->input('address');
+        return view('/userContents/articlePosts/articleConfirm', compact('article','store'));
     }
     /**
      * 記事投稿登録機能
@@ -63,14 +66,21 @@ class ArticleController extends Controller
         $user = Auth::user();
         //プロフィールモデルのインスタンス作成
         $article = new Article();
+        $store = new Store();
 
         $article->user_id = $user->id;
         $article->title = $request->input('title');
         $article->tag = $request->input('tag');
         $article->image = $request->input('image');;
         $article->body = $request->input('body');
+        $article->store = $request->input('store');
+        $article->address = $request->input('address');
         $article->recommend = $request->input('recommend');
         $article->save();
+        $store->store = $request->input('store');
+        $store->address = $request->input('address');
+        $store->recommend = $request->input('recommend');
+        $store->save();
         return redirect()->route('articlePost');
     }
 

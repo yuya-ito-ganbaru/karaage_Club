@@ -11,7 +11,7 @@ class Article extends Model
 
     protected $table = 'articles';
 
-    protected $fillable = ['user_id', 'title', 'tag', 'image', 'body', 'recommend'];
+    protected $fillable = ['user_id', 'title', 'tag', 'image', 'body', 'recommend','store', 'address'];
 
     public function user() {
         return $this->belongsTo(User::class, 'user_id', 'id');

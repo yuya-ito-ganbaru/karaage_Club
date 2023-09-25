@@ -82,7 +82,7 @@ Route::post('/favoriteDelete', [FavoriteController::class, 'favoriteDelete'])->n
 /**** topページ表示 ****/
 Route::get('/', [ContentController::class, 'contentsView'])->name('top');
 Route::get('/favoriteList', [ContentController::class, 'favoriteList'])->name('favoriteList');
-
+Route::get('/pageView{id}', [ContentController::class, 'pageView'])->name('pageView');
 /**** お気に入り詳細表示 ****/
 Route::middleware(['auth'])->group(function () {
     Route::get('/userFavoriteList', [FavoriteController::class, 'favoriteList'])->name('userFavoriteLists');

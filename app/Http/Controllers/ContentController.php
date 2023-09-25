@@ -27,7 +27,10 @@ class ContentController extends Controller
         $allLikes = Like::all();
         $allFavorite = Favorite::all();
 
-        return view('/topPages/top', compact('allArticles', 'allUsers', 'allProfiles', 'allLikes', 'allFavorite'));
+        $id = 5;
+        $articles = Article::where('id', $id)->get();
+
+        return view('/topPages/top', compact('allArticles', 'allUsers', 'allProfiles', 'allLikes', 'allFavorite','articles'));
     }
     /**
      * お気に入りリスト
@@ -41,5 +44,14 @@ class ContentController extends Controller
         $favorite_article_id = $favoriteList->pluck('article_id')->toArray();
         $favorite_articles = Article::whereIn('id', $favorite_article_id)->get();
         return response()->json(['favorite_articles' => $favorite_articles]);
+    }
+
+    /**
+     * 投稿記事表示機能
+     */
+    public function pageView($id)
+    {
+        $articles = Article::where('id', $id)->get();
+        return view('/topPages/pageView', compact('articles'));
     }
 }

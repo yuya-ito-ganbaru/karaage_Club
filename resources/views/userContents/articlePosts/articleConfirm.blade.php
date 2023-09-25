@@ -24,6 +24,10 @@
                         <input name="image" type="hidden" value="{{ $article->image }}">
                         <!-- recommend -->
                         <input name="recommend" type="hidden" value="{{ $article->recommend }}">
+                        <!-- store -->
+                        <input name="store" type="hidden" value="{{ $store->store }}">
+                        <!-- address -->
+                        <input name="address" type="hidden" value="{{ $store->address }}">
 
                         <div style="display: flex;">
                             <div style="width: 70%;" class="p-6">
@@ -56,6 +60,10 @@
 
                                     <p>{{ $article->tag }}</p>
                                 </div>
+                                <div style="margin-top:2%; border-bottom:1px solid #d1cfcf;">
+                                    <p>{{ $store->store }}</p>
+                                    <p>{{ $store->address }}</p>
+                                </div>
                                 <div style="margin-top:2%; border-bottom:1px solid #d1cfcf; min-height: 350px;" class="form-floating">
                                     <p>{{ $article->body }}</p>
                                 </div>
@@ -64,8 +72,8 @@
 
                         <input style="background-color: black; border-color: white; margin-top:2%; padding:10px;" type="submit" class="btn btn-dark" name="submit" id="submit" value="送信">
                     </form>
-                    
+
+                </div>
             </div>
         </div>
-    </div>
 </x-app-layout>

@@ -83,13 +83,14 @@
         </header>
 
         <!-- About section one-->
+        @foreach($articles as $article)
         <section class="py-5 bg-light" id="scroll-target">
             <div class="container px-5 my-5">
                 <div class="row gx-5 align-items-center">
-                    <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
+                    <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" src="{{ asset('storage/article_images/' . $article->image) }}" alt="..." /></div>
                     <div class="col-lg-6">
-                        <h2 class="fw-bolder">Our founding</h2>
-                        <p class="lead fw-normal text-muted mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto est, ut esse a labore aliquam beatae expedita. Blanditiis impedit numquam libero molestiae et fugit cupiditate, quibusdam expedita, maiores eaque quisquam.</p>
+                        <h2 class="fw-bolder">{{ $article->title }}</h2>
+                        <p class="lead fw-normal text-muted mb-0">{{ $article->body }}</p>
                     </div>
                 </div>
             </div>
@@ -99,36 +100,47 @@
         <section class="py-5">
             <div class="container px-5 my-5">
                 <div class="row gx-5 align-items-center">
-                    <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
+                    <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="{{ asset('storage/article_images/' . $article->image) }}" alt="..." /></div>
                     <div class="col-lg-6">
-                        <h2 class="fw-bolder">Growth &amp; beyond</h2>
-                        <p class="lead fw-normal text-muted mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto est, ut esse a labore aliquam beatae expedita. Blanditiis impedit numquam libero molestiae et fugit cupiditate, quibusdam expedita, maiores eaque quisquam.</p>
+                        <h2 class="fw-bolder">{{ $article->title }}</h2>
+                        <p class="lead fw-normal text-muted mb-0">{{ $article->body }}</p>
                     </div>
                 </div>
             </div>
         </section>
+        @endforeach
         <!-- Page Content-->
         <section class="py-5">
             <div class="container px-5 my-5">
                 <div class="row gx-5">
-                    
+                    @foreach($articles as $article)
                     <div style="width: 100%;" class="col-lg-9">
                         <!-- Post content-->
                         <article>
-                            
+
                             <!-- Preview image figure-->
-                            <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>
+                            <figure class="mb-4"><img class="img-fluid rounded" src="{{ asset('storage/article_images/' . $article->image) }}" alt="..." /></figure>
                             <!-- Post content-->
                             <section class="mb-5">
-                                <p class="fs-5 mb-4">Science is an enterprise that should be cherished as an activity of the free human mind. Because it transforms who we are, how we live, and it gives us an understanding of our place in the universe.</p>
-                                <p class="fs-5 mb-4">The universe is large and old, and the ingredients for life as we know it are everywhere, so there's no reason to think that Earth would be unique in that regard. Whether of not the life became intelligent is a different question, and we'll see if we find that.</p>
-                                <p class="fs-5 mb-4">If you get asteroids about a kilometer in size, those are large enough and carry enough energy into our system to disrupt transportation, communication, the food chains, and that can be a really bad day on Earth.</p>
-                                <h2 class="fw-bolder mb-4 mt-5">I have odd cosmic thoughts every day</h2>
-                                <p class="fs-5 mb-4">For me, the most fascinating interface is Twitter. I have odd cosmic thoughts every day and I realized I could hold them to myself or share them with people who might be interested.</p>
-                                <p class="fs-5 mb-4">Venus has a runaway greenhouse effect. I kind of want to know what happened there because we're twirling knobs here on Earth without knowing the consequences of it. Mars once had running water. It's bone dry today. Something bad happened there as well.</p>
+                                <div style="border-bottom:1px solid #d1cfcf;">
+
+                                    <p class="fs-5 mb-4">{{ $article->title }}</p>
+                                </div>
+                                <div style="margin-top:2%; border-bottom:1px solid #d1cfcf;">
+
+                                    <p class="fs-5 mb-4">{{ $article->tag }}</p>
+                                </div>
+                                <div style="margin-top:2%; border-bottom:1px solid #d1cfcf;">
+                                    <p class="fs-5 mb-4">{{ $article->store }}</p>
+                                    <p class="fs-5 mb-4">{{ $article->address }}</p>
+                                </div>
+                                <div style="margin-top:2%; border-bottom:1px solid #d1cfcf; min-height: 350px;" class="form-floating">
+                                    <p class="fs-5 mb-4">{{ $article->body }}</p>
+                                </div>
                             </section>
                         </article>
                     </div>
+                    @endforeach
                 </div>
         </section>
         <!-- Blog preview section-->
@@ -139,17 +151,19 @@
                     @foreach($allArticles as $article)
                     <div class="col-lg-4 mb-5">
                         <div class="card h-100 shadow border-0">
-                            <img style="height: inherit;" class="card-img-top" src="{{ asset('storage/article_images/' . $article->image) }}" alt="..." />
+                            <a href="{{ route('pageView', ['id' => $article->id]) }}"><img style="height: inherit;" class="card-img-top" src="{{ asset('storage/article_images/' . $article->image) }}" alt="..." /></a>
+
                             <div class="card-body p-4">
                                 <div style="display: flex;">
-                                <h5 class="card-title mb-3">{{ $article->title }}</h5>
-                                @if(Auth::check())
+
+                                    <h5 class="card-title mb-3"><a href="{{ route('pageView', ['id' => $article->id]) }}">{{ $article->title }}</a></h5>
+                                    @if(Auth::check())
                                     <i class="click fa-solid fa-heart" style="margin:0 10px; font-size:20px; color: #d1d1d1;">
                                         <input class="article_id" type="hidden" name="article_id" value="{{ $article->id }}">
                                     </i>
                                     @endif
                                 </div>
-                                
+
                                 <p class="card-text mb-0">{{ $article->tag }}</p>
                             </div>
                         </div>

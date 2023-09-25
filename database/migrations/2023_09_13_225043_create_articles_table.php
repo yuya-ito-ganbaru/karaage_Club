@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('tag')->comment('投稿タグ');
             $table->string('image')->nullable()->comment('投稿画像');
             $table->text('body')->comment('投稿内容');
+            $table->string('store')->nullable();
+            $table->string('address')->nullable();
             $table->integer('recommend')->comment('評価');
             $table->timestamps();
 
