@@ -50,12 +50,12 @@ class FormController extends Controller
         switch ($submitBtnVal) {
             case 'confirm';
             //値を持たせた状態で確認画面へリダイレクト
-            return to_route('form.confirm')->withInput();
+            return redirect()->route('form.confirm')->withInput();
             break;
 
             case 'back';
             //値を持たせた状態で入力画面へリダイレクト
-            return to_route('form')->withInput();
+            return redirect()->route('form')->withInput();
             break;
 
             case 'complete';
@@ -78,7 +78,7 @@ class FormController extends Controller
             $form->body = $form_data['body'];
             $form->save();
     
-            return to_route('form.complete');
+            return redirect()->route('form.complete');
             break;
             default;
         }

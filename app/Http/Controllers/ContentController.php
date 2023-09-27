@@ -38,12 +38,14 @@ class ContentController extends Controller
      */
     public function favoriteList()
     {
+        if (Auth::check()) {
         $user = Auth::user();
         $favoriteList = Favorite::where('user_id', $user->id)->get();
         //favoriteテーブルのarticle_idを検索
         $favorite_article_id = $favoriteList->pluck('article_id')->toArray();
         $favorite_articles = Article::whereIn('id', $favorite_article_id)->get();
         return response()->json(['favorite_articles' => $favorite_articles]);
+        }
     }
 
     /**
