@@ -42,7 +42,7 @@
     <br><br><br>
 
     <div>
-        <input id="pac-input" class="controls" type="text" placeholder="Enter a location" />
+        <input id="pac-input" class="controls" type="text" placeholder="Enter a location" value="札幌市中央区宮の森"/>
     </div>
     <div id="map" style="width:600px; height:450px;"></div>
     <div id="infowindow-content">
@@ -56,8 +56,10 @@
         function initMap() {
             const map = new google.maps.Map(document.getElementById("map"), {
                 center: {
+                    
                     lat: 43.068661,
                     lng: 141.350755
+                   
                 },
                 zoom: 15,
             });

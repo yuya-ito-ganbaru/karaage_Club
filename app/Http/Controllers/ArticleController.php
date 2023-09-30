@@ -27,13 +27,19 @@ class ArticleController extends Controller
      */
     public function postCreate(Request $request)
     {
+        $article_data = $request->validate([
+            'image' => 'required|file',
+            'title' => 'required|string',
+            'body' => 'required|string',
+            'recommend' => 'required|string',
+        ]);
         //dd($_POST);
         //ログインユーザー確認
         $user = Auth::user();
         //プロフィールモデルのインスタンス作成
         $article = new Article();
         $store = new Store();
-
+        
         //ディレクトリ名
         $dir = 'article_images';
         if ($request->hasFile('image')) {
@@ -47,11 +53,11 @@ class ArticleController extends Controller
         }
 
         $article->user_id = $user->id;
-        $article->title = $request->input('title');
+        $article->title = $article_data['title'];
         $article->tag = $request->input('tag');
         $article->image = $file_name;
-        $article->body = $request->input('body');
-        $article->recommend = $request->input('recommend');
+        $article->body = $article_data['body'];
+        $article->recommend = $article_data['recommend'];
         $store->store = $request->input('store');
         $store->address = $request->input('address');
         return view('/userContents/articlePosts/articleConfirm', compact('article','store'));
@@ -61,6 +67,9 @@ class ArticleController extends Controller
      */
     public function postComplete(Request $request)
     {
+        if ($request->input('return')) {
+            return redirect()->route('articlePost')->withInput();
+        }
         //dd($_POST);
         //ログインユーザー確認
         $user = Auth::user();
@@ -137,6 +146,12 @@ class ArticleController extends Controller
      */
     public function articleUpData(Request $request)
     {
+        $article_data = $request->validate([
+            //'image' => 'required|file',
+            'title' => 'required|string',
+            'body' => 'required|string',
+            'recommend' => 'required|string',
+        ]);
         //dd($_POST);
         $user = Auth::user();
         $article = Article::find($request->input('id'));
@@ -158,13 +173,16 @@ class ArticleController extends Controller
         }
 
         $article->user_id = $user->id;
-        $article->title = $request->input('title');
+        $article->title = $article_data['title'];
         $article->tag = $request->input('tag');
-
-        $article->body = $request->input('body');
+        $article->address = $request->input('address');
         $article->recommend = $request->input('recommend');
-
+        $article->body = $article_data['body'];
+        $article->recommend = $article_data['recommend'];
         $article->save();
+        
+        
+        
         return redirect()->route('articleList');
     }
 }

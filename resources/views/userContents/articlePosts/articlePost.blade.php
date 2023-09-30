@@ -22,9 +22,13 @@
 
                                 <label for="formFile" class="form-label">投稿写真</label>
                                 <input name="image" class="form-control" type="file" id="formFile">
+                                @if($errors->has('image'))
+                                <p style="color: red;">{{ $errors->first('image') }}</p>
+                                @endif
                                 <br>
 
                                 <div class="review">
+                                    <p>おすすめ度</p>
                                     <div class="stars">
                                         <span>
                                             <input id="review01" type="radio" name="recommend" value="5">
@@ -38,6 +42,9 @@
                                             <input id="review05" type="radio" name="recommend" value="1">
                                             <label for="review05">★</label>
                                         </span>
+                                        @if($errors->has('recommend'))
+                                        <p style="color: red;">{{ $errors->first('recommend') }}</p>
+                                        @endif
                                     </div>
                                     <!--
                                     <input type="hidden" name="recommend" id="selectedRecommendValue" value="">
@@ -47,6 +54,9 @@
                             <div style="width: 100%;" class="p-6 text-gray-900">
                                 <div>
                                     <label for="title" class="form-label">タイトル</label>
+                                    @if($errors->has('title'))
+                                    <p style="color: red;">{{ $errors->first('title') }}</p>
+                                    @endif
                                     <input id="title" name="title" style="border-radius: 5px; border:1px solid #d1cfcf;;" type="text" class="form-control" value="{{ old('title') }}">
                                 </div>
                                 <div style="margin-top:2%;">
@@ -68,16 +78,18 @@
                                     <span id="place-address"></span>
                                 </div>
 
-                                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsEew_vuhM5krFb3cgpZyh5hpveiyWfrY&callback=initMap&libraries=places&v=weekly" defer></script>
                                 {{------------------------- google パーツ-------------------------------------}}
                                 <div style="margin-top:2%;" class="form-floating">
+                                    @if($errors->has('body'))
+                                    <p style="color: red;">{{ $errors->first('body') }}</p>
+                                    @endif
                                     <textarea name="body" class="form-control" placeholder="自己紹介" id="floatingInput" style="min-height: 350px">{{ old('body') }}</textarea>
                                     <label style="color: #d1cfcf;" for="floatingInput">投稿記事</label>
                                 </div>
                             </div>
                         </div>
 
-                        <input style="background-color: black; border-color: white; margin-top:2%; padding:10px;" type="submit" class="btn btn-dark" name="submit" id="submit" value="送信">
+                        <input style="background-color: black; border-color: white; margin-top:2%; padding:10px 30px;" type="submit" class="btn btn-dark" name="submit" id="submit" value="送信">
                     </form>
                 </div>
             </div>

@@ -98,17 +98,17 @@
                 <div class="p-6 text-gray-900">
                     {{ ('投稿記事表示') }}
                     @foreach($articles as $article)
+                    
                     <!-- Page Content-->
                     <section class="py-5">
                         <div class="container px-5 my-5">
                             <div class="row gx-5">
-
-                                <!-- Post content-->
-                                <article style="display: flex;">
-                                    <!-- Preview image figure-->
-                                    <div style="width: 100%; height: 0; position: relative;">
-
-                                        <figure class="mb-4"><img class="img-fluid rounded" src="{{ asset('storage/article_images/' . $article->image) }}" alt="..." /></figure>
+                                @foreach($articles as $article)
+                                <div style="width: 90%; margin:0 auto;" class="col-lg-9">
+                                    <!-- Post content-->
+                                    <article>
+                                        <!-- Preview image figure-->
+                                        <figure class="mb-4"><img style="margin: 0 auto; width:80%; height:80%;" class="img-fluid rounded" src="{{ asset('storage/article_images/' . $article->image) }}" alt="..." /></figure>
                                         <div class="review">
                                             <div class="stars stars_conf">
                                                 <span>
@@ -125,11 +125,12 @@
                                                 </span>
                                             </div>
                                         </div>
-                                    </div>
+                                        <!-- Post content-->
+                                        <section class="mb-5">
+                                            <div style="border-bottom:1px solid #d1cfcf;">
 
-                                    <!-- Post content-->
-                                    <section style="width: 100%;" class="mb-5">
-                                        <div style="width: 100%;" class="p-6 text-gray-900">
+                                                <p class="fs-5 mb-4">{{ $article->id }}</p>
+                                            </div>
                                             <div style="border-bottom:1px solid #d1cfcf;">
 
                                                 <p class="fs-5 mb-4">{{ $article->title }}</p>
@@ -145,10 +146,13 @@
                                             <div style="margin-top:2%; border-bottom:1px solid #d1cfcf; min-height: 350px;" class="form-floating">
                                                 <p class="fs-5 mb-4">{{ $article->body }}</p>
                                             </div>
-                                        </div>
-                                    </section>
-                                </article>
+                                        </section>
+
+                                    </article>
+                                </div>
+                                @endforeach
                             </div>
+                        </div>
                     </section>
                     @endforeach
                     <button type="button" onClick="history.back()">戻る</button>

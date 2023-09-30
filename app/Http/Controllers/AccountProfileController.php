@@ -39,6 +39,7 @@ class AccountProfileController extends Controller
      */
     public function create(Request $request)
     {
+
         //dd($_POST);
         //ディレクトリ名
         $dir = 'img';
@@ -51,6 +52,11 @@ class AccountProfileController extends Controller
             $file_name = null;
         }
 
+        $account_data = $request->validate([
+            'nickname' => 'required|string',
+            'body' => 'nullable|string',
+        ]);
+
         //ログインユーザー確認
         $user = Auth::user();
         //プロフィールモデルのインスタンス作成
@@ -58,8 +64,8 @@ class AccountProfileController extends Controller
 
         //プロフィール情報を設定
         $profile->user_id = $user->id;
-        $profile->body = $request->input('body');
-        $profile->nickname = $request->input('nickname');
+        $profile->body = $account_data['body'];
+        $profile->nickname = $account_data['nickname'];
         $profile->image = $file_name;
         $profile->save();
         return redirect()->route('accountProfile');
@@ -93,9 +99,13 @@ class AccountProfileController extends Controller
             // プロフィールに新しい画像の情報を設定
             $profile->image = $file_name;
         }
+        $account_data = $request->validate([
+            'nickname' => 'required|string',
+            'body' => 'nullable|string',
+        ]);
 
-        $profile->body = $request->body;
-        $profile->nickname = $request->input('nickname');
+        $profile->body = $account_data['body'];;
+        $profile->nickname = $account_data['nickname'];
         //$profile->image = $file_name;
         if ($file_name) {
             $profile->image = $file_name;

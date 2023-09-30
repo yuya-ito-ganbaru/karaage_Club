@@ -27,10 +27,10 @@ class ContentController extends Controller
         $allLikes = Like::all();
         $allFavorite = Favorite::all();
 
-        $id = 5;
+        $id = 3;
         $articles = Article::where('id', $id)->get();
 
-        return view('/topPages/top', compact('allArticles', 'allUsers', 'allProfiles', 'allLikes', 'allFavorite','articles'));
+        return view('/topPages/top', compact('allArticles', 'allUsers', 'allProfiles', 'allLikes', 'allFavorite', 'articles'));
     }
     /**
      * お気に入りリスト
@@ -39,12 +39,12 @@ class ContentController extends Controller
     public function favoriteList()
     {
         if (Auth::check()) {
-        $user = Auth::user();
-        $favoriteList = Favorite::where('user_id', $user->id)->get();
-        //favoriteテーブルのarticle_idを検索
-        $favorite_article_id = $favoriteList->pluck('article_id')->toArray();
-        $favorite_articles = Article::whereIn('id', $favorite_article_id)->get();
-        return response()->json(['favorite_articles' => $favorite_articles]);
+            $user = Auth::user();
+            $favoriteList = Favorite::where('user_id', $user->id)->get();
+            //favoriteテーブルのarticle_idを検索
+            $favorite_article_id = $favoriteList->pluck('article_id')->toArray();
+            $favorite_articles = Article::whereIn('id', $favorite_article_id)->get();
+            return response()->json(['favorite_articles' => $favorite_articles]);
         }
     }
 
@@ -53,6 +53,7 @@ class ContentController extends Controller
      */
     public function pageView($id)
     {
+        
         $articles = Article::where('id', $id)->get();
         return view('/topPages/pageView', compact('articles'));
     }

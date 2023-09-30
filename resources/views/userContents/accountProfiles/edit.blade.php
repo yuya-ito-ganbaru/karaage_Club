@@ -18,9 +18,11 @@
 
                         <div style="margin-top:2%;">
                             <label for="formControlInput" class="form-label">ニックネーム</label>
+                            @if($errors->has('nickname'))
+                            <p style="color: red;">{{ $errors->first('nickname') }}</p>
+                            @endif
                             <input name="nickname" style="border-radius: 5px; border:1px solid #d1cfcf;;" type="text" class="form-control" id="formControlInput" value="{{ $account ? $account->nickname : 'からあげメンバー' }}">
                         </div>
-
                         <div style="margin-top:2%;" class="form-floating">
                             <textarea name="body" class="form-control" placeholder="自己紹介" id="floatingInput" style="min-height: 550px">{{ $account ? $account->body : '' }}</textarea>
                             <label style="color: #d1cfcf;" for="floatingInput">自己紹介文</label>

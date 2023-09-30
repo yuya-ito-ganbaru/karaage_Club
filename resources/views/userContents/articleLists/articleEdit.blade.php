@@ -29,6 +29,7 @@
 
                                 <div class="review">
                                     <div class="stars">
+                                    <p>おすすめ度</p>
                                         <span>
                                         <input id="review01" type="radio" name="recommend" value="5" {{ $article->recommend == 5 ? 'checked' : '' }}>
                                         <label for="review01">★</label>
@@ -40,6 +41,9 @@
                                         <label for="review04">★</label>
                                         <input id="review05" type="radio" name="recommend" value="1" {{ $article->recommend == 1 ? 'checked' : '' }}>
                                         <label for="review05">★</label>
+                                        @if($errors->has('recommend'))
+                                        <p style="color: red;">{{ $errors->first('recommend') }}</p>
+                                        @endif
                                         </span>
                                     </div>
                                     <!--
@@ -50,13 +54,24 @@
                             <div style="width: 100%;" class="p-6 text-gray-900">
                                 <div>
                                     <label for="title" class="form-label">タイトル</label>
+                                    @if($errors->has('title'))
+                                    <p style="color: red;">{{ $errors->first('title') }}</p>
+                                    @endif
                                     <input id="title" name="title" style="border-radius: 5px; border:1px solid #d1cfcf;;" type="text" class="form-control" value="{{ $article->title }}{{ old('title') }}">
                                 </div>
                                 <div style="margin-top:2%;">
                                     <label for="tag" class="form-label">タグ</label>
                                     <input id="tag" name="tag" style="border-radius: 5px; border:1px solid #d1cfcf;;" type="text" class="form-control" value="{{ $article->tag }}{{ old('tag') }}">
                                 </div>
+                                <div style="margin-top:2%;">
+                                    <label for="store" class="form-label">ここどこ？</label>
+                                    <input id="store" name="store" style="border-radius: 5px; border:1px solid #d1cfcf;;" type="text" class="form-control" value="{{ $article->store }}{{ old('store') }}">
+                                    <input id="address" name="address" style="border-radius: 5px; border:1px solid #d1cfcf;;" type="text" class="form-control" value="{{ $article->address }}{{ old('address') }}">
+                                </div>
                                 <div style="margin-top:2%;" class="form-floating">
+                                @if($errors->has('body'))
+                                    <p style="color: red;">{{ $errors->first('body') }}</p>
+                                    @endif
                                     <textarea name="body" class="form-control" placeholder="自己紹介" id="floatingInput" style="min-height: 350px">{{ $article->body }}{{ old('body') }}</textarea>
                                     <label style="color: #d1cfcf;" for="floatingInput">投稿記事</label>
                                 </div>

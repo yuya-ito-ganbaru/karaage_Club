@@ -77,12 +77,18 @@ Route::post('/favoriteRegister', [FavoriteController::class, 'favoriteRegister']
 //お気に入り削除
 Route::post('/favoriteDelete', [FavoriteController::class, 'favoriteDelete'])->name('favoriteDelete');
 
-
+/**** お問い合せページ ****/
+Route::get('/form', [FormController::class, 'index'])->name('form');
+Route::post('/form/confirm', [FormController::class, 'sendMail']);
+Route::get('/form/confirm', [FormController::class, 'confirm'])->name('form.confirm');
+Route::get('/form/complete', [FormController::class, 'complete'])->name('form.complete');
 
 /**** topページ表示 ****/
 Route::get('/', [ContentController::class, 'contentsView'])->name('top');
 Route::get('/favoriteList', [ContentController::class, 'favoriteList'])->name('favoriteList');
 Route::get('/pageView{id}', [ContentController::class, 'pageView'])->name('pageView');
+
+
 /**** お気に入り詳細表示 ****/
 Route::middleware(['auth'])->group(function () {
     Route::get('/userFavoriteList', [FavoriteController::class, 'favoriteList'])->name('userFavoriteLists');
@@ -96,11 +102,7 @@ Route::middleware(['auth'])->group(function () {
 //    return view('/contactForm');
 //});
 
-/**** お問い合せページ ****/
-Route::get('/form', [FormController::class, 'index'])->name('form');
-Route::post('/form/confirm', [FormController::class, 'sendMail']);
-Route::get('/form/confirm', [FormController::class, 'confirm'])->name('form.confirm');
-Route::get('/form/complete', [FormController::class, 'complete'])->name('form.complete');
+
 
 
 

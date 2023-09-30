@@ -36,6 +36,7 @@
                                 </div>
                                 <div class="review">
                                     <div class="stars stars_conf">
+                                    <p>おすすめ度</p>
                                         <span>
                                             <input id="review01" type="radio" name="recommend" value="5" {{ $article->recommend == 5 ? 'checked' : '' }}>
                                             <label for="review01">★</label>
@@ -61,6 +62,7 @@
                                     <p>{{ $article->tag }}</p>
                                 </div>
                                 <div style="margin-top:2%; border-bottom:1px solid #d1cfcf;">
+                                    <label>ここどこ？</label>
                                     <p>{{ $store->store }}</p>
                                     <p>{{ $store->address }}</p>
                                 </div>
@@ -70,8 +72,10 @@
                             </div>
                         </div>
 
-                        <input style="background-color: black; border-color: white; margin-top:2%; padding:10px;" type="submit" class="btn btn-dark" name="submit" id="submit" value="送信">
+                        <input style="background-color: black; border-color: white; margin-top:2%; padding:10px 30px;" type="submit" class="btn btn-dark" name="submit" id="submit" value="送信">
+                        <button style="margin-top:2%; padding:10px;" class="btn btn-danger"><input name="return" type="submit" value="プロフィールリセット"></button>
                     </form>
+
 
                 </div>
             </div>

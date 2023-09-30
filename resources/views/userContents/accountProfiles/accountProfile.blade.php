@@ -37,3 +37,13 @@
         </div>
     </div>
 </x-app-layout>
+<script>
+    $(function() {
+        $('.btn-danger').click(function() {
+            var confirmReset = confirm('プロフィールをリセットしますか？');
+            if (!confirmReset) {
+                event.preventDefault();
+            }
+        })
+    });
+</script>

@@ -20,10 +20,11 @@
                                 <article style="display: flex;">
                                     <!-- Preview image figure-->
                                     <div style="width: 100%; height: 0; position: relative;">
-                                        
+
                                         <figure class="mb-4"><img class="img-fluid rounded" src="{{ asset('storage/article_images/' . $article->image) }}" alt="..." /></figure>
                                         <div class="review">
                                             <div class="stars stars_conf">
+                                                <p>おすすめ度</p>
                                                 <span>
                                                     <input id="review01" type="radio" name="recommend" value="5" {{ $article->recommend == 5 ? 'checked' : '' }}>
                                                     <label for="review01">★</label>
@@ -52,6 +53,7 @@
                                                 <p class="fs-5 mb-4">{{ $article->tag }}</p>
                                             </div>
                                             <div style="margin-top:2%; border-bottom:1px solid #d1cfcf;">
+                                                <label>ここどこ？</label>
                                                 <p class="fs-5 mb-4">{{ $article->store }}</p>
                                                 <p class="fs-5 mb-4">{{ $article->address }}</p>
                                             </div>
@@ -63,7 +65,7 @@
                                 </article>
                             </div>
                     </section>
-                    
+
                     @if(Auth::user()->id == $article->user_id)
                     <div class="p-6" style="display: flex;">
                         <div>
@@ -84,3 +86,13 @@
         </div>
     </div>
 </x-app-layout>
+<script>
+    $(function() {
+        $('.btn-danger').click(function() {
+            var confirmReset = confirm('記事を削除しますか？');
+            if (!confirmReset) {
+                event.preventDefault();
+            }
+        })
+    });
+</script>
