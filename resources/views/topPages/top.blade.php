@@ -69,9 +69,6 @@
                     <a href="{{ route('store') }}">
                         <h1>storeページ</h1>
                     </a>
-                    <a href="{{ route('sample') }}">
-                        <h1>sampleページ</h1>
-                    </a>
                 </div>
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
@@ -97,7 +94,7 @@
             </div>
         </nav>
 
-        <!-- Header-->
+        <!-- Header
         <header class="py-5">
             <div class="container px-5">
                 <div class="row justify-content-center">
@@ -107,16 +104,20 @@
                 </div>
             </div>
         </header>
-
+        -->
         <!-- Page Content-->
+        <!--
         <section class="py-5">
             <div class="container px-5 my-5">
                 <div class="row gx-5">
                     @foreach($articles as $article)
                     <div style="width: 90%; margin:0 auto;" class="col-lg-9">
+                        -->
                         <!-- Post content-->
+                        <!--
                         <article>
-                            <!-- Preview image figure-->
+                             Preview image figure-->
+                             <!--
                             <figure class="mb-4"><img style="margin: 0 auto; width:80%; height:80%;" class="img-fluid rounded" src="{{ asset('storage/article_images/' . $article->image) }}" alt="..." /></figure>
                             <div class="review">
                                 <div class="stars stars_conf">
@@ -134,7 +135,8 @@
                                     </span>
                                 </div>
                             </div>
-                            <!-- Post content-->
+                            -->
+                            <!-- Post content
                             <section class="mb-5">
                                 <div style="border-bottom:1px solid #d1cfcf;">
 
@@ -163,7 +165,7 @@
                 </div>
             </div>
         </section>
-
+        -->
         <section><div id="app"></div></section>
 
         <!-- Blog preview section-->
@@ -188,6 +190,7 @@
                                 </div>
                                 <p class="card-text mb-0">{{ $article->tag }}{{ $article->id }}</p>
                             </div>
+                            
                             <!-- トリガーボタン -->
                             <a href="{{ route('pageView', ['id' => $article->id]) }}"><button style="width: -webkit-fill-available;" class="load-content-button btn btn-primary">コンテンツを読み込む</button></a>
                         </div>
@@ -216,6 +219,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="{{ asset('js/scripts.js') }}"></script>
+    
     @if(Auth::check())
     <script>
         $.ajaxSetup({

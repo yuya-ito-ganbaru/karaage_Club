@@ -3,23 +3,20 @@
         <h4 class="mb-5">記事一覧</h4>
         <div class="table-list">
             <v-table density="compact">
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>タイトル</th>
-                        <th>タグ</th>
-                        <th>作成日</th>
-                        <th></th>
-                    </tr>
-                </thead>
                 <tbody>
                     <tr v-for="(item, index) in todoList" :key="index">
                         <td>{{ index + 1 }}</td>
-                        <td>{{ item.title }}</td>
-                        <td>{{ item.tag }}</td>
-                        <img :src="'/storage/article_images/' + item.image" alt="画像" @click="moveTodoDetail(item.id)" />
-                        <td>
-                            <div class="review">
+                        <td style="flex-grow: 1; width: 100%;">
+                            <div style="display: flex; align-items: center; justify-content: space-between;">
+                                <div style="width: 100%;">
+                                <img style=" margin: 0 auto; max-height: 350px; min-height: 250px;" :src="'/storage/article_images/' + item.image" alt="画像" @click="moveTodoDetail(item.id)" />
+                                </div>
+                            <div style="width: 50%;">
+                                <div>
+                                    <p>{{ item.title }}</p>
+                                    <p>{{ item.tag }}</p>
+                                    <p>{{ item.body }}</p>
+                                <div class="review">
                                 <div class="stars stars_conf">
                                     <span>
                                         <input :id="'review' + item.id + '01'" type="radio" :name="'recommend' + item.id" value="5" :checked="item.recommend === 5" />
@@ -38,15 +35,17 @@
                                         <label :for="'review' + item.id + '05'">★</label>
                                     </span>
                                 </div>
+                                </div>
                             </div>
-                            <v-btn style="width: -webkit-fill-available;" class="load-content-button btn btn-primary" @click="moveTodoDetail(item.id)">コンテンツを読み込む</v-btn>
+                            </div>
+                            </div>
+                            <v-btn style="width: -webkit-fill-available; margin-bottom: 15px;" class="load-content-button btn btn-primary" @click="moveTodoDetail(item.id)">コンテンツを読み込む</v-btn>
                             <!--<v-btn @click="deleteTodo" density="compact" color="red">削除</v-btn>-->
                         </td>
                     </tr>
                 </tbody>
             </v-table>
         </div>
-
     </v-container>
 </template>
 
@@ -71,5 +70,7 @@ const moveTodoDetail = (todoId) => {
 const createTodo = () => {
     router.push({name:'detail'})
 }
+
+
 
 </script>

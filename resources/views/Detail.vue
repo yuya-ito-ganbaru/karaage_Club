@@ -1,47 +1,60 @@
 <template>
-    <v-container>
-        <h4 class="mb-5">記事詳細</h4>
-        <div class="input-form">
-            <v-row>
-                <v-col cols="2" style="text-align: right; vertical-align: middle;">
-                    タイトル:
-                </v-col>
-                <v-col cols="4">
-                    <v-card-text class="inner-text">{{ todoDetail.title }}</v-card-text>
-                </v-col>
-            </v-row>
-            <v-row>
-                <v-col cols="2" style="text-align: right;">
-                    ステータス:
-                </v-col>
-                <v-col cols="3">
-                    <v-card-text class="inner-text">{{ todoDetail.tag }}</v-card-text>
-                </v-col>
-            </v-row>
-            <!-- 画像表示 -->
-            <v-row>
-                <v-col cols="2" style="text-align: right; vertical-align: middle;">
-                    画像:
-                </v-col>
-                <v-col cols="3">
-                    <img class="img-fluid rounded mb-5 mb-lg-0" :src="`/storage/article_images/${todoDetail.image}`" alt="..." />
-                </v-col>
-            </v-row>
-        </div>
-        <div class="mt-5">
-            <v-row>
-                <v-col cols="5">
-                    <v-btn to="/" color="blue-grey-lighten-4">戻る</v-btn>
-                </v-col>
-                <v-col cols="2">
-                    <v-btn v-if='props.todoId == null' @click="createTodo" color="blue-accent-2">新規作成</v-btn>
-                    <v-btn v-else @click="updateTodo" color="blue-accent-2">更新</v-btn>
-                </v-col>
-            </v-row>
-        </div>
-    </v-container>
-</template>
-
+    <div class="container px-5 my-5">
+      <div class="row gx-5"  style="justify-content: center;">
+        <!-- Post content -->
+        <article class="col-md-8" style="display: flex;">
+          <!-- Preview image figure -->
+          <div style="width: 100%; height: 0; position: relative;">
+            <figure class="mb-4"><img class="img-fluid rounded" :src="'/storage/article_images/' + todoDetail.image" alt="..." /></figure>
+            <div class="review">
+              <div class="stars stars_conf">
+                <p>おすすめ度</p>
+                <span>
+                  <input id="review01" type="radio" name="recommend" value="5" :checked="todoDetail.recommend === 5" />
+                  <label for="review01">★</label>
+                  <input id="review02" type="radio" name="recommend" value="4" :checked="todoDetail.recommend === 4" />
+                  <label for="review02">★</label>
+                  <input id="review03" type="radio" name="recommend" value="3" :checked="todoDetail.recommend === 3" />
+                  <label for="review03">★</label>
+                  <input id="review04" type="radio" name="recommend" value="2" :checked="todoDetail.recommend === 2" />
+                  <label for="review04">★</label>
+                  <input id="review05" type="radio" name="recommend" value="1" :checked="todoDetail.recommend === 1" />
+                  <label for="review05">★</label>
+                </span>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Post content -->
+          <section style="width: 100%;" class="mb-5">
+            <div style="width: 100%;" class="p-6 text-gray-900">
+              <div style="border-bottom: 1px solid #d1cfcf;">
+                <p class="fs-5 mb-4">{{ todoDetail.title }}</p>
+              </div>
+              <div style="margin-top: 2%; border-bottom: 1px solid #d1cfcf;">
+                <p class="fs-5 mb-4">{{ todoDetail.tag }}</p>
+              </div>
+              <div style="margin-top: 2%; border-bottom: 1px solid #d1cfcf;">
+                <label>ここどこ？</label>
+                <p class="fs-5 mb-4">{{ todoDetail.store }}</p>
+                <p class="fs-5 mb-4">{{ todoDetail.address }}</p>
+              </div>
+              <div style="margin-top: 2%; border-bottom: 1px solid #d1cfcf; min-height: 350px;" class="form-floating">
+                <p class="fs-5 mb-4">{{ todoDetail.body }}</p>
+              </div>
+            </div>
+          </section>
+        </article>
+      </div>
+    </div>
+    <div class="mt-5" style="padding-left: 150px;">
+    <v-row>
+        <v-col cols="5">
+            <v-btn to="/" color="blue-grey-lighten-4">戻る</v-btn>
+        </v-col>
+    </v-row>
+    </div>
+  </template>
 
 <script setup>
 // /Users/yuya/Desktop/karaage_club/karaage_Club/public/images/karaage.png
