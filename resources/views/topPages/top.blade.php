@@ -69,6 +69,9 @@
                     <a href="{{ route('store') }}">
                         <h1>storeページ</h1>
                     </a>
+                    <a href="{{ route('sample') }}">
+                        <h1>sampleページ</h1>
+                    </a>
                 </div>
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">

@@ -1,5 +1,5 @@
 <template>
-    <v-container>
+    <v-container fluid>
         <h4 class="mb-5">記事一覧</h4>
         <div class="table-list">
             <v-table density="compact">
