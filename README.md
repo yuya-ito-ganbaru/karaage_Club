@@ -64,3 +64,39 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+# Name
+karaageClub
+ 
+"karaageClub"は投稿型の飲食店情報交換サイトです。
+ 
+# DEMO
+ 
+ 
+# Features
+ 
+"karaageClub"は飲食店サイトでは宣伝されてない隠れた飲食店を紹介、検索するために作成いたしました。
+ 
+# Requirement
+ 
+laravel10
+ 
+# Installation
+ 
+# Usage
+ 
+git clone https://github.com/yuya-ito-ganbaru/karaage_Club
+
+# Note
+ 
+改善点あり、まだ作成中となっております。
+ 
+# Author
+ 
+作成情報を列挙する
+ 
+* 伊藤 佑弥
+* 所属 クリエイト・スタッフィング株式会社
+* yuya.ito1990@gmail.com
+ 
+# License
