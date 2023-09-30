@@ -103,7 +103,7 @@ Route::middleware(['auth'])->group(function () {
 //});
 
 
-
+Route::get('/sample', fn() => view('app')) -> where('any', '.+');
 
 
 Route::get('/store', [StoreController::class, 'store'])->name('store');
