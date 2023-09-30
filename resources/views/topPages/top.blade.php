@@ -162,9 +162,10 @@
                     @endforeach
                 </div>
             </div>
-
-
         </section>
+
+        <section><div id="app"></div></section>
+
         <!-- Blog preview section-->
         <section class="py-5">
             <div class="container px-5 my-5">

@@ -4,12 +4,12 @@ import detail from "../views/Detail.vue"
 
 const routes = [
     {
-        path:"/sample",
+        path:"/",
         component:home,
         name:"home"
     },
     {
-        path:"/sample/detail/:todoId?",
+        path:"/detail/:todoId?",
         component:detail,
         name:"detail",
         props:true

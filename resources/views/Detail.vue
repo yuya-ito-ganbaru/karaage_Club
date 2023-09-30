@@ -31,7 +31,7 @@
         <div class="mt-5">
             <v-row>
                 <v-col cols="5">
-                    <v-btn to="/sample" color="blue-grey-lighten-4">戻る</v-btn>
+                    <v-btn to="/" color="blue-grey-lighten-4">戻る</v-btn>
                 </v-col>
                 <v-col cols="2">
                     <v-btn v-if='props.todoId == null' @click="createTodo" color="blue-accent-2">新規作成</v-btn>

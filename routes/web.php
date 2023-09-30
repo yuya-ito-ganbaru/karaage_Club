@@ -103,7 +103,7 @@ Route::middleware(['auth'])->group(function () {
 //});
 
 
-Route::get('/sample', fn() => view('sample')) -> where('any', '.+')->name('sample');
+Route::get('/top', fn() => view('top')) -> where('any', '.+')->name('sample');
 
 
 

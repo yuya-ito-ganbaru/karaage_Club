@@ -13,8 +13,7 @@
     <!-- Styles -->
 </head>
 <body>
-<div id="app">
-</div>
+    <div id="app"></div>
 <!-- Scripts -->
 </body>
 </html>
