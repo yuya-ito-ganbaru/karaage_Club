@@ -17,24 +17,36 @@
                         <td>{{ index + 1 }}</td>
                         <td>{{ item.title }}</td>
                         <td>{{ item.tag }}</td>
-                        <td>{{ item.image }}</td>
-                        <td>{{ item.created_at }}</td>
+                        <img :src="'/storage/article_images/' + item.image" alt="画像" @click="moveTodoDetail(item.id)" />
                         <td>
-                            <v-btn @click="moveTodoDetail(item.id)">更新</v-btn>
+                            <div class="review">
+                                <div class="stars stars_conf">
+                                    <span>
+                                        <input :id="'review' + item.id + '01'" type="radio" :name="'recommend' + item.id" value="5" :checked="item.recommend === 5" />
+                                        <label :for="'review' + item.id + '01'">★</label>
+
+                                        <input :id="'review' + item.id + '02'" type="radio" :name="'recommend' + item.id" value="4" :checked="item.recommend === 4" />
+                                        <label :for="'review' + item.id + '02'">★</label>
+                                        
+                                        <input :id="'review' + item.id + '03'" type="radio" :name="'recommend' + item.id" value="3" :checked="item.recommend === 3" />
+                                        <label :for="'review' + item.id + '03'">★</label>
+                                        
+                                        <input :id="'review' + item.id + '04'" type="radio" :name="'recommend' + item.id" value="2" :checked="item.recommend === 2" />
+                                        <label :for="'review' + item.id + '04'">★</label>
+                                        
+                                        <input :id="'review' + item.id + '05'" type="radio" :name="'recommend' + item.id" value="1" :checked="item.recommend === 1" />
+                                        <label :for="'review' + item.id + '05'">★</label>
+                                    </span>
+                                </div>
+                            </div>
+                            <v-btn style="width: -webkit-fill-available;" class="load-content-button btn btn-primary" @click="moveTodoDetail(item.id)">コンテンツを読み込む</v-btn>
                             <!--<v-btn @click="deleteTodo" density="compact" color="red">削除</v-btn>-->
                         </td>
                     </tr>
                 </tbody>
             </v-table>
         </div>
-        <div class="mt-5">
-            <v-row>
-                <v-col cols="10"></v-col>
-                <v-col cols="1">
-                    <v-btn @click="createTodo" color="blue-accent-2">新規作成</v-btn>
-                </v-col>
-            </v-row>
-        </div>
+
     </v-container>
 </template>
 
