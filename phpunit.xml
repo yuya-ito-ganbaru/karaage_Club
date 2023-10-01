@@ -6,10 +6,12 @@
 >
     <testsuites>
         <testsuite name="Unit">
-            <directory>tests/Unit</directory>
+            <!--<directory>tests/Unit</directory>-->
         </testsuite>
         <testsuite name="Feature">
-            <directory>tests/Feature</directory>
+            <!--<directory>tests/Feature</directory>-->
+            <directory suffix="Test.php">./tests/Feature/Test</directory>
+            <directory suffix="Test.php">./tests/Feature/Post</directory>
         </testsuite>
     </testsuites>
     <source>
@@ -26,5 +28,6 @@
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
+        <env name="DB_DATABASE" value="database/database_test.sqlite"/>
     </php>
 </phpunit>
