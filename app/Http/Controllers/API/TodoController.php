@@ -41,7 +41,7 @@ class TodoController extends Controller
         $params = $req -> only(['user_id', 'article_id', 'comment']);
         $sql = <<< 'SQL'
         INSERT 
-        INTO todo_list(TODO_NAME, STATUS, CREATE_DATE) 
+        INTO comments(user_id, article_id, comment, CREATE_DATE) 
         VALUES (:TODO_NAME, :STATUS, CURDATE())
         SQL;
         DB::insert($sql, $params);
