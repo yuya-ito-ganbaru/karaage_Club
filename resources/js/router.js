@@ -14,6 +14,8 @@ const routes = [
         name:"detail",
         props:true
     },
+    
+   
 ]
 
 const router = createRouter({

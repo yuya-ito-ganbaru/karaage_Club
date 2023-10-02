@@ -108,7 +108,8 @@ Route::get('/store', [StoreController::class, 'store'])->name('store');
 Route::get('/top', fn() => view('top')) -> where('any', '.+')->name('sample');
 
 
-//Route::post('/articlePost/register', [StoreController::class, 'storeRegister'])->name('storeRegister');
+
+Route::post('/articlePost/register', [StoreController::class, 'storeRegister'])->name('storeRegister');
 
 
 

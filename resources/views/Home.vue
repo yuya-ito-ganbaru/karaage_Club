@@ -40,46 +40,38 @@
                                 </div>
                             </div>
 
-                            <v-btn style="width: -webkit-fill-available; margin-bottom: 15px;" class="load-content-button btn btn-primary" @click="moveTodoDetail(item.id)">コンテンツを読み込む</v-btn>
-                            <v-btn style="width: -webkit-fill-available; margin-bottom: 15px;" @click="createTodo" color="blue-accent-2">コメントする</v-btn>
-                            <!--<v-btn @click="deleteTodo" density="compact" color="red">削除</v-btn>-->
-                            
-                            <span style="width: -webkit-fill-available; margin-bottom: 15px;" v-for="(comment, commentIndex) in commentList" :key="'comment' + commentIndex">
-                                <p style="background-color: burlywood; width: -webkit-fill-available; margin-bottom: 15px;" v-if="comment.article_id === item.id">{{ comment.user_id }} {{ comment.comment }}</p>
-                            </span>
-                            
+                            <v-btn style="width: -webkit-fill-available; margin-bottom: 15px;" class="load-content-button btn btn-primary" @click="moveTodoDetail">コンテンツを読み込む</v-btn>
+                            <div class="flex-container">
+                                <div style="width: 100%;">
+                                    <v-col>
+                                        <v-text-field height="150px" width="150px" density="compact" hide-details variant="solo" class="inner-text" v-model="commentText"></v-text-field>
+                                    </v-col>
+                                    <v-btn @click="postComment(item.id)" color="blue-accent-2" style="width: -webkit-fill-available; margin: 0 10px; margin-bottom: 15px;">新規コメント</v-btn>
+                                </div>
+
+                                <div style="width: 100%;">
+                                    <p>コメント表示部分</p>
+                                    <span style="width: -webkit-fill-available; margin-bottom: 15px;" v-for="(comment, commentIndex) in commentList" :key="'comment' + commentIndex">
+                                    <p style="background-color: burlywood; width: -webkit-fill-available; margin-bottom: 15px;" v-if="comment.article_id === item.id">{{ comment.user_id }} {{ comment.comment }}</p>
+                                    </span>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
             </v-table>
             
         </div>
-        
     </v-container>
-
-    <div>
-    <h4>Comment List</h4>
-    <ul>
-        <li v-for="(item, index) in commentList" :key="'comment' + index">
-            <p>{{ item.id }} {{ item.article_id }} {{ item.user_id }} {{ item.comment }}</p>
-        </li>
-    </ul>
-    </div>
-    
-    <div class="mt-5">
-            <v-row>
-                <v-col cols="10"></v-col>
-                <v-col cols="1">
-                    
-                </v-col>
-            </v-row>
-        </div>
-
 </template>
 
 <script setup>
-import {ref, onMounted} from 'vue'
+
+import {reactive,defineEmits,ref, onMounted} from 'vue'
+
 import {useRouter} from 'vue-router'
+
+
 
 //一覧取得
 const todoList = ref([])
@@ -101,12 +93,25 @@ const moveTodoDetail = (todoId) => {
     router.push({name: 'detail', params:{todoId:todoId}})
 }
 
-//詳細に遷移(新規モード)
-const createTodo = () => {
-    //router.push({name:'detail'})
+const commentText = ref('');
+// 詳細に遷移(新規モード)
+const postComment = async (itemId) => {
+    console.log('article_id:', itemId)
+    console.log('コメント:',commentText.value)
+    const response = await axios.post('postComment', {
+            comment: commentText.value,
+            article_id: itemId
+        });
+
 }
 
 
 
-
 </script>
+
+<style>
+/* App.vue と同じディレクトリにある styles.css というCSSファイル */
+.flex-container {
+  display: flex;
+}
+</style>

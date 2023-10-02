@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\TodoController;
 
+use App\Models\Comment;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,11 +22,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+
 Route::get('getTodoList',[TodoController::class,'getTodoList']);
 Route::post('getTodo',[TodoController::class,'getTodo']);
-Route::post('updateTodo',[TodoController::class,'updateTodo']);
-Route::post('createTodo',[TodoController::class,'createTodo']);
-Route::post('deleteTodo',[TodoController::class,'deleteTodo']);
+//Route::post('updateTodo',[TodoController::class,'updateTodo']);
+//Route::post('createTodo',[TodoController::class,'createTodo']);
+//Route::post('deleteTodo',[TodoController::class,'deleteTodo']);
 //コメント
 Route::get('getCommentList',[TodoController::class,'getCommentList']);
 Route::post('postComment',[TodoController::class,'postComment']);
