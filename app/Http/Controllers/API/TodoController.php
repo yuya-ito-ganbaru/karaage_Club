@@ -30,4 +30,21 @@ class TodoController extends Controller
         return response()->json(['imagePath' => $imagePath]);
     }
 
+    //コメント機能
+    public function getCommentList() {
+        $sql = 'SELECT * FROM comments';
+        $comments = DB::select($sql);
+        return $comments;
+    }
+    //コメント作成
+    public function postComment(Request $req) {
+        $params = $req -> only(['user_id', 'article_id', 'comment']);
+        $sql = <<< 'SQL'
+        INSERT 
+        INTO todo_list(TODO_NAME, STATUS, CREATE_DATE) 
+        VALUES (:TODO_NAME, :STATUS, CURDATE())
+        SQL;
+        DB::insert($sql, $params);
+    }
+
 }

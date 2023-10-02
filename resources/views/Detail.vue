@@ -57,10 +57,7 @@
   </template>
 
 <script setup>
-// /Users/yuya/Desktop/karaage_club/karaage_Club/public/images/karaage.png
-// /images/karaage.png
-// /Users/yuya/Desktop/karaage_club/karaage_Club/storage/app/public/article_images
-// ./storage/app/public/article_images/karaage.png
+
 import {ref,onMounted} from 'vue'
 //前画面から(ホームからIDを受け取る)
 const props = defineProps({

@@ -95,6 +95,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
+Route::get('/store', [StoreController::class, 'store'])->name('store');
+
 
 /**** 作業用スペース ****/
 
@@ -106,10 +108,15 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/top', fn() => view('top')) -> where('any', '.+')->name('sample');
 
 
+//Route::post('/articlePost/register', [StoreController::class, 'storeRegister'])->name('storeRegister');
 
 
-Route::get('/store', [StoreController::class, 'store'])->name('store');
-Route::post('/articlePost/register', [StoreController::class, 'storeRegister'])->name('storeRegister');
+
+//コメント投稿処理
+//Route::post('/store/{comment_id}',[CommentsController::class, 'store']);
+
+
+
 
 /**** 作業用スペース ****/
 

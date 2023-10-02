@@ -25,3 +25,6 @@ Route::post('getTodo',[TodoController::class,'getTodo']);
 Route::post('updateTodo',[TodoController::class,'updateTodo']);
 Route::post('createTodo',[TodoController::class,'createTodo']);
 Route::post('deleteTodo',[TodoController::class,'deleteTodo']);
+//コメント
+Route::get('getCommentList',[TodoController::class,'getCommentList']);
+Route::post('postComment',[TodoController::class,'postComment']);
