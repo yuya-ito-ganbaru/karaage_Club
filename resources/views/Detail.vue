@@ -45,22 +45,15 @@
             </div>
           </section>
         </article>
-      </div>
     </div>
-    <div class="mt-5" style="padding-left: 150px;">
-    <v-row>
         <v-col cols="5">
             <v-btn to="/" color="blue-grey-lighten-4">戻る</v-btn>
         </v-col>
-    </v-row>
     </div>
   </template>
 
 <script setup>
-// /Users/yuya/Desktop/karaage_club/karaage_Club/public/images/karaage.png
-// /images/karaage.png
-// /Users/yuya/Desktop/karaage_club/karaage_Club/storage/app/public/article_images
-// ./storage/app/public/article_images/karaage.png
+
 import {ref,onMounted} from 'vue'
 //前画面から(ホームからIDを受け取る)
 const props = defineProps({
@@ -77,19 +70,9 @@ if(props.todoId != null) {
         }
     })
 }
-///Users/yuya/Desktop/karaage_club/karaage_Club/storage/app/public/article_images
 
-//更新
-const updateTodo = async () => {
-    //情報にIDをつける
-    todoDetail.ID = props.todoId
-    await axios.post('updateTodo', todoDetail.value)
-}
 
-//新規作成
-const createTodo = async () => {
-    await axios.post('createTodo', todoDetail.value)
-}
+
 </script>
 
 <style>
