@@ -42,13 +42,14 @@
 
                             <v-btn style="width: -webkit-fill-available; margin-bottom: 15px;" class="load-content-button btn btn-primary" @click="moveTodoDetail">コンテンツを読み込む</v-btn>
                             <div class="flex-container">
-                                <div style="width: 100%;">
+                            
+                                <div  style="width: 100%;">
                                     <v-col>
                                         <v-text-field height="150px" width="150px" density="compact" hide-details variant="solo" class="inner-text" v-model="commentText"></v-text-field>
                                     </v-col>
-                                    <v-btn @click="postComment(item.id)" color="blue-accent-2" style="width: -webkit-fill-available; margin: 0 10px; margin-bottom: 15px;">新規コメント</v-btn>
+                                    <v-btn type="submit" @click="postComment(item.id)" color="blue-accent-2" style="width: -webkit-fill-available; margin: 0 10px; margin-bottom: 15px;">新規コメント</v-btn>
                                 </div>
-
+                          
                                 <div style="width: 100%;">
                                     <p>コメント表示部分</p>
                                     <span style="width: -webkit-fill-available; margin-bottom: 15px;" v-for="(comment, commentIndex) in commentList" :key="'comment' + commentIndex">
@@ -60,18 +61,15 @@
                     </tr>
                 </tbody>
             </v-table>
-            
         </div>
     </v-container>
 </template>
 
 <script setup>
 
-import {reactive,defineEmits,ref, onMounted} from 'vue'
+import {ref, onMounted} from 'vue'
 
 import {useRouter} from 'vue-router'
-
-
 
 //一覧取得
 const todoList = ref([])
@@ -93,17 +91,11 @@ const moveTodoDetail = (todoId) => {
     router.push({name: 'detail', params:{todoId:todoId}})
 }
 
-const commentText = ref('');
+//const commentText = ref('');
 // 詳細に遷移(新規モード)
-const postComment = async (itemId) => {
-    console.log('article_id:', itemId)
-    console.log('コメント:',commentText.value)
-    const response = await axios.post('postComment', {
-            comment: commentText.value,
-            article_id: itemId
-        });
-
-}
+//const postComment = async (itemId) => {
+//    console.log('article_id:', itemId)
+//}
 
 
 

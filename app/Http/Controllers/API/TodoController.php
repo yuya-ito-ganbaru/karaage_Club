@@ -44,19 +44,9 @@ class TodoController extends Controller
     }
 
     //コメント作成
-    public function postComment(Request $req)
+    public function postComment(Request $request)
     {
-        dd($_POST);
-        $user = Auth::user();
-        $user_id = $user->id; 
-        $params['user_id'] = 1; 
-        $params = $req->only(['comment', 'article_id', 'user_id']);
-        
-        $sql = <<< 'SQL'
-        INSERT 
-        INTO comments(comment, $user, article_id, CREATE_DATE) 
-        VALUES (:comment, :user_id, :article_id, CURDATE())
-        SQL;
-        DB::insert($sql, $params);
+        dd($request);
+        return Comment::create($request->all());
     }
 }

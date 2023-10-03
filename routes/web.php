@@ -10,6 +10,7 @@ use App\Http\Controllers\FormController;
 use App\Http\Controllers\StoreController;
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\TodoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -111,7 +112,7 @@ Route::get('/top', fn() => view('top')) -> where('any', '.+')->name('sample');
 
 Route::post('/articlePost/register', [StoreController::class, 'storeRegister'])->name('storeRegister');
 
-
+Route::post('postComment',[TodoController::class,'postComment'])->name('postComment');
 
 //コメント投稿処理
 //Route::post('/store/{comment_id}',[CommentsController::class, 'store']);

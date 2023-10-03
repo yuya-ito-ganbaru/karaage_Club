@@ -32,7 +32,7 @@
             justify-content: flex-end;
         }
 
-        
+
         .stars input[type='radio'] {
             display: none;
         }
@@ -59,6 +59,9 @@
             padding-bottom: 10px;
         }
     </style>
+    <script>
+    window.csrfToken = "{{ csrf_token() }}";
+    </script>
 </head>
 
 <body class="d-flex flex-column">
