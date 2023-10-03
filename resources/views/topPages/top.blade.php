@@ -32,6 +32,7 @@
             justify-content: flex-end;
         }
 
+        
         .stars input[type='radio'] {
             display: none;
         }
