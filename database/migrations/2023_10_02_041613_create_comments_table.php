@@ -15,15 +15,8 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('comment');
             $table->bigInteger('article_id')->unsigned();
-            $table->foreign('article_id')
-                ->references('id')
-                ->on('articles')
-                ->onDelete('cascade');
-            $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
+            $table->foreign('article_id')->references('id')->on('articles')->cascadeOnDelete()->comment('article_idはarticlesテーブルID');
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete()->comment('user_idはusersテーブルID');
             $table->timestamps();
         });
     }
