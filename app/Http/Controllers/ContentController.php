@@ -7,6 +7,7 @@ use App\Models\Profile;
 use App\Models\Article;
 use App\Models\Like;
 use App\Models\Favorite;
+use App\Models\Comment;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,11 +27,12 @@ class ContentController extends Controller
         $allArticles = Article::all();
         $allLikes = Like::all();
         $allFavorite = Favorite::all();
+        $allComment = Comment::all();
 
         $id = 3;
         $articles = Article::where('id', $id)->get();
 
-        return view('/topPages/top', compact('allArticles', 'allUsers', 'allProfiles', 'allLikes', 'allFavorite', 'articles'));
+        return view('/topPages/top', compact('allArticles', 'allUsers', 'allProfiles', 'allLikes', 'allFavorite', 'articles', 'allComment'));
     }
     /**
      * お気に入りリスト
@@ -47,6 +49,7 @@ class ContentController extends Controller
             return response()->json(['favorite_articles' => $favorite_articles]);
         }
     }
+    
 
     /**
      * 投稿記事表示機能

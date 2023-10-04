@@ -31,7 +31,7 @@
             <p style="color: red;">{{ $errors->first('name') }}</p>
             @endif
             <div class="col-sm-10">
-                <input style="width: 100%;" class="form-control" type="text" id="name" name="name" value="{{ old('name') }}">
+                <input style="width: 100%; border:solid 1px black;" class="form-control" type="text" id="name" name="name" value="{{ old('name') }}">
             </div>
         </div>
         {{-- ▼ メールアドレス --}}
@@ -41,7 +41,7 @@
             <p style="color: red;">{{ $errors->first('email') }}</p>
             @endif
             <div class="col-sm-10">
-                <input style="width: 100%;" class="form-control" type="text" id="email" name="email" value="{{ old('email') }}">
+                <input style="width: 100%; border:solid 1px black;" class="form-control" type="text" id="email" name="email" value="{{ old('email') }}">
             </div>
         </div>
         {{-- ▼ お問合わせ内容 --}}
@@ -52,7 +52,7 @@
             @endif
             <div class="col-sm-10">
                 <div class="form-floating">
-                    <textarea style="width: 100%; height: 300px" class="form-control" placeholder="お問い合せ内容" type="text" id="body" name="body">{{ old('body') }}</textarea>
+                    <textarea style="width: 100%; height: 300px; border:solid 1px black;" class="form-control" placeholder="お問い合せ内容" type="text" id="body" name="body">{{ old('body') }}</textarea>
                 </div>
             </div>
         </div>

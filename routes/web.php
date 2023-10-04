@@ -104,6 +104,8 @@ Route::get('/store', [StoreController::class, 'store'])->name('store');
 //    return view('/contactForm');
 //});
 
+Route::get('/result/ajax', 'HomeController@getData');
+
 
 Route::get('/top', fn() => view('top')) -> where('any', '.+')->name('sample');
 

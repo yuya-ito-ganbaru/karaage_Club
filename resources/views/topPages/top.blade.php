@@ -21,8 +21,6 @@
     <script src="https://kit.fontawesome.com/aa126b8606.js" crossorigin="anonymous"></script>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/favicon.ico') }}" />
-    <!-- Styles -->
-    
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
         /**** 評価ボタンのcss ****/
@@ -66,11 +64,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container px-5">
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('store') }}">
-                        <h1>storeページ</h1>
-                    </a>
-                </div>
+                
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('top') }}">
@@ -95,7 +89,7 @@
             </div>
         </nav>
       
-        <section><div id="app"></div></section>
+        
 
         <!-- Blog preview section-->
         <section class="py-5">
@@ -118,6 +112,7 @@
                                     @endif
                                 </div>
                                 <p class="card-text mb-0">{{ $article->tag }}{{ $article->id }}</p>
+                                
                             </div>
                             
                             <!-- トリガーボタン -->
