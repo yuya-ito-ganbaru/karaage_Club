@@ -29,10 +29,10 @@ class ContentController extends Controller
         $allFavorite = Favorite::all();
         $allComment = Comment::all();
 
-        $id = 3;
-        $articles = Article::where('id', $id)->get();
+        //$id = 3;
+        //$articles = Article::where('id', $id)->get();
 
-        return view('/topPages/top', compact('allArticles', 'allUsers', 'allProfiles', 'allLikes', 'allFavorite', 'articles', 'allComment'));
+        return view('/topPages/top', compact('allArticles', 'allUsers', 'allProfiles', 'allLikes', 'allFavorite', 'allComment'));
     }
     /**
      * お気に入りリスト
@@ -49,7 +49,7 @@ class ContentController extends Controller
             return response()->json(['favorite_articles' => $favorite_articles]);
         }
     }
-    
+
 
     /**
      * 投稿記事表示機能

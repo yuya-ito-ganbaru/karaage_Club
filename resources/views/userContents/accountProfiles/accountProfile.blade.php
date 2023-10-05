@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ ('プロフィール ※レスポンシブ未対応、styleのリファクタリング未対応') }}
+            
         </h2>
     </x-slot>
 

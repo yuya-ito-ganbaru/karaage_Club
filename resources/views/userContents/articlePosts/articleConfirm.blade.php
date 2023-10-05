@@ -73,7 +73,7 @@
                         </div>
 
                         <input style="background-color: black; border-color: white; margin-top:2%; padding:10px 30px;" type="submit" class="btn btn-dark" name="submit" id="submit" value="送信">
-                        <button style="margin-top:2%; padding:10px;" class="btn btn-danger"><input name="return" type="submit" value="プロフィールリセット"></button>
+                        <button style="margin-top:2%; padding:10px;" class="btn btn-danger"><input name="return" type="submit" value="リセット"></button>
                     </form>
 
 

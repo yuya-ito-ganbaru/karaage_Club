@@ -111,7 +111,7 @@
                                     </i>
                                     @endif
                                 </div>
-                                <p class="card-text mb-0">{{ $article->tag }}{{ $article->id }}</p>
+                                <p class="card-text mb-0">{{ $article->tag }}</p>
                                 
                             </div>
                             

@@ -68,7 +68,7 @@
                                 <input name="store" type="hidden" id="place-name-input" value="">
                                 <input name="address" type="hidden" id="place-address-input" value="">
 
-                                <div>
+                                <div style="margin-top: 10px;">
                                     <label>ここどこ？</label>
                                     <input id="pac-input" class="controls" type="text" placeholder="Enter a location" />
                                 </div>
@@ -79,11 +79,11 @@
                                 </div>
 
                                 {{------------------------- google パーツ-------------------------------------}}
-                                <div style="margin-top:2%;" class="form-floating">
+                                <div style="margin-top:10px;" class="form-floating">
                                     @if($errors->has('body'))
                                     <p style="color: red;">{{ $errors->first('body') }}</p>
                                     @endif
-                                    <textarea name="body" class="form-control" placeholder="自己紹介" id="floatingInput" style="min-height: 350px">{{ old('body') }}</textarea>
+                                    <textarea name="body" class="form-control" placeholder="自己紹介" id="floatingInput" style="min-height: 350px; margin:5px;">{{ old('body') }}</textarea>
                                     <label style="color: #d1cfcf;" for="floatingInput">投稿記事</label>
                                 </div>
                             </div>
