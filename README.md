@@ -26,4 +26,8 @@ karaage_Club
 
 ## Author
 
+
+=======
+
 [tcnksm](https://github.com/tcnksm)
+>>>>>>> 419d76a26b0c12ce9b70f47e41348ecd2a5b98c5
